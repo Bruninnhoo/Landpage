@@ -1,0 +1,107 @@
+/* ========================================
+   BACKGROUND ANIMATED WIND LINES
+   ======================================== */
+
+.bg-lines-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0.85;
+}
+
+.bg-lines-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.wind-line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 1000 800;
+  stroke-dashoffset: 1800;
+  transform-origin: center;
+  will-change: stroke-dashoffset, transform;
+}
+
+/* Upper Wind Gusts */
+.wind-line--1 {
+  stroke: rgba(37, 99, 235, 0.15); /* Primary Sapphire Breeze */
+  stroke-width: 1.8px;
+  animation: windFlow 16s linear infinite, windWave1 12s ease-in-out infinite alternate;
+}
+
+.wind-line--2 {
+  stroke: rgba(148, 163, 184, 0.22); /* Slate Companion Line */
+  stroke-width: 1.2px;
+  animation: windFlow 20s linear infinite, windWave2 15s ease-in-out infinite alternate;
+  animation-delay: -4s;
+}
+
+/* Mid-Screen Wind Gusts */
+.wind-line--3 {
+  stroke: rgba(37, 99, 235, 0.12);
+  stroke-width: 1.5px;
+  animation: windFlow 18s linear infinite, windWave2 14s ease-in-out infinite alternate;
+  animation-delay: -8s;
+}
+
+.wind-line--4 {
+  stroke: rgba(148, 163, 184, 0.18);
+  stroke-width: 1.1px;
+  animation: windFlow 22s linear infinite, windWave1 16s ease-in-out infinite alternate;
+  animation-delay: -12s;
+}
+
+/* Lower Wind Gusts */
+.wind-line--5 {
+  stroke: rgba(37, 99, 235, 0.14);
+  stroke-width: 1.6px;
+  animation: windFlow 17s linear infinite, windWave1 13s ease-in-out infinite alternate;
+  animation-delay: -6s;
+}
+
+.wind-line--6 {
+  stroke: rgba(148, 163, 184, 0.2);
+  stroke-width: 1.0px;
+  animation: windFlow 24s linear infinite, windWave2 18s ease-in-out infinite alternate;
+  animation-delay: -10s;
+}
+
+/* Continuous Wind Flow & Wave Motion */
+@keyframes windFlow {
+  0% {
+    stroke-dashoffset: 1800;
+  }
+  100% {
+    stroke-dashoffset: -1800;
+  }
+}
+
+@keyframes windWave1 {
+  0% {
+    transform: translateY(0px) skewY(0deg);
+  }
+  50% {
+    transform: translateY(-18px) skewY(0.4deg);
+  }
+  100% {
+    transform: translateY(12px) skewY(-0.3deg);
+  }
+}
+
+@keyframes windWave2 {
+  0% {
+    transform: translateY(0px) scaleY(1);
+  }
+  50% {
+    transform: translateY(15px) scaleY(1.03);
+  }
+  100% {
+    transform: translateY(-20px) scaleY(0.97);
+  }
+}

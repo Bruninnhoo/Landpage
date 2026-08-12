@@ -1,0 +1,89 @@
+/* ========================================
+   CONTINUOUS TECH MARQUEE (SCROLLING LOGO RIBBON)
+   ======================================== */
+
+.tech-marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 1.25rem 0;
+  background: rgba(255, 255, 255, 0.7);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  margin: 2.5rem 0;
+  backdrop-filter: blur(8px);
+}
+
+.tech-marquee-wrapper::before,
+.tech-marquee-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.tech-marquee-wrapper::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--bg-primary) 0%, transparent 100%);
+}
+
+.tech-marquee-wrapper::after {
+  right: 0;
+  background: linear-gradient(-90deg, var(--bg-primary) 0%, transparent 100%);
+}
+
+.tech-marquee__track {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: max-content;
+  animation: marqueeScroll 35s linear infinite;
+}
+
+.tech-marquee-wrapper:hover .tech-marquee__track {
+  animation-play-state: paused;
+}
+
+.tech-marquee__item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 1.25rem;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.tech-marquee__item:hover {
+  border-color: #bfdbfe;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.tech-marquee__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tech-marquee__name {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
