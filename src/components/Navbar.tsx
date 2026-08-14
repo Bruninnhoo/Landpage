@@ -31,10 +31,6 @@ export default function Navbar() {
         <div className="navbar__container">
           {/* Brand Logo */}
           <Link to="/" className="navbar__logo" id="nav-logo">
-            <div className="navbar__logo-avatar-wrap">
-              <img src="/bruno-avatar.jpg" alt="Bruno Heyden" className="navbar__logo-img" />
-              <span className="navbar__status-dot" title="Disponível para projetos" />
-            </div>
             <span className="navbar__logo-text">
               bruno<span className="navbar__logo-dot">.dev</span>
             </span>

@@ -132,7 +132,7 @@ export default function Home() {
             </div>
 
             <h1 className="hero__title animate-fade-in-up delay-2">
-              Transformo conceitos em<br />
+              Transformando conceitos em<br />
               <span className="gradient-text">produtos digitais</span>.
             </h1>
 
