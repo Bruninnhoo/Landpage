@@ -48,9 +48,10 @@ export default function Footer() {
               <span>Next.js</span>
               <span>TypeScript</span>
               <span>Node.js</span>
+              <span>Python</span>
+              <span>Django</span>
               <span>PostgreSQL</span>
               <span>Docker</span>
-              <span>Python</span>
             </div>
           </div>
 

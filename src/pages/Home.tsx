@@ -19,6 +19,7 @@ import {
   TypescriptLogo,
   NodejsLogo,
   PythonLogo,
+  DjangoLogo,
   PostgresLogo,
   DockerLogo,
   TailwindLogo,
@@ -48,6 +49,7 @@ const techCategories = [
     items: [
       { name: 'Node.js', logo: NodejsLogo },
       { name: 'Python', logo: PythonLogo },
+      { name: 'Django', logo: DjangoLogo },
       { name: 'Express', logo: NodejsLogo },
     ]
   },
