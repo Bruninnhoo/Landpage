@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { User, Briefcase, Award, GraduationCap, Download, CheckCircle2, Code2, Sparkles, Terminal } from '../components/Icons'
+import { User, Briefcase, Award, GraduationCap, CheckCircle2, Code2, Sparkles, Terminal } from '../components/Icons'
 import './About.css'
 
 const skillCategories = [
@@ -64,22 +63,6 @@ const personalInterests = [
 ]
 
 export default function About() {
-  const [downloadedCV, setDownloadedCV] = useState(false)
-
-  const handleDownloadCV = (e: React.MouseEvent) => {
-    e.preventDefault()
-    setDownloadedCV(true)
-    setTimeout(() => setDownloadedCV(false), 3000)
-
-    // Trigger synthetic download or alert
-    const link = document.createElement('a')
-    link.href = '/bruno-avatar.jpg'
-    link.download = 'Bruno_Heyden_Desenvolvedor_CV.jpg'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
-
   return (
     <div className="about" id="about-page">
 
