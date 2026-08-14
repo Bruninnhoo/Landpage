@@ -6,17 +6,17 @@ const skillCategories = [
   {
     category: 'Front-end',
     icon: Code2,
-    skills: ['React / Next.js', 'TypeScript', 'HTML5 / CSS3', 'Tailwind CSS', 'Vue.js', 'State Management (Zustand/Redux)'],
+    skills: ['React / Next.js', 'TypeScript', 'HTML5 / CSS3', 'Tailwind CSS', 'Vue.js', 'State Management (Redux/Context API)'],
   },
   {
     category: 'Back-end',
     icon: Terminal,
-    skills: ['Node.js / Express', 'Python / Django', 'RESTful APIs', 'GraphQL', 'Microsserviços', 'Clean Architecture'],
+    skills: ['Node.js / Express', 'Python / Django', 'RESTful APIs', 'WebSocket / Socket.io', 'Microsserviços', 'Clean Architecture'],
   },
   {
     category: 'Banco de Dados',
     icon: Award,
-    skills: ['PostgreSQL', 'MongoDB', 'Redis', 'Supabase / Firebase', 'Prisma ORM'],
+    skills: ['PostgreSQL', 'MongoDB', 'Redis', 'Firebase', 'ORMs (TypeORM/Drizzle)'],
   },
   {
     category: 'DevOps & Outros',

@@ -7,11 +7,9 @@ import {
   PostgresLogo, 
   DockerLogo, 
   TailwindLogo, 
-  SupabaseLogo, 
   RedisLogo, 
   AWSLogo, 
   MongoLogo, 
-  GraphQLLogo, 
   ViteLogo, 
   GitLogo 
 } from './TechLogos'
@@ -25,11 +23,9 @@ const techList = [
   { name: 'Python', logo: PythonLogo },
   { name: 'PostgreSQL', logo: PostgresLogo },
   { name: 'Tailwind CSS', logo: TailwindLogo },
-  { name: 'Supabase', logo: SupabaseLogo },
   { name: 'Docker', logo: DockerLogo },
   { name: 'Redis', logo: RedisLogo },
   { name: 'AWS', logo: AWSLogo },
-  { name: 'GraphQL', logo: GraphQLLogo },
   { name: 'MongoDB', logo: MongoLogo },
   { name: 'Vite', logo: ViteLogo },
   { name: 'Git', logo: GitLogo },

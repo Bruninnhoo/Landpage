@@ -22,11 +22,9 @@ import {
   PostgresLogo,
   DockerLogo,
   TailwindLogo,
-  SupabaseLogo,
   RedisLogo,
   AWSLogo,
   MongoLogo,
-  GraphQLLogo,
   ViteLogo,
   GitLogo
 } from '../components/TechLogos'
@@ -50,7 +48,6 @@ const techCategories = [
     items: [
       { name: 'Node.js', logo: NodejsLogo },
       { name: 'Python', logo: PythonLogo },
-      { name: 'GraphQL', logo: GraphQLLogo },
       { name: 'Express', logo: NodejsLogo },
     ]
   },
@@ -61,7 +58,6 @@ const techCategories = [
       { name: 'PostgreSQL', logo: PostgresLogo },
       { name: 'MongoDB', logo: MongoLogo },
       { name: 'Redis', logo: RedisLogo },
-      { name: 'Supabase', logo: SupabaseLogo },
     ]
   },
   {
