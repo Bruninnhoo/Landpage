@@ -76,19 +76,11 @@ const techCategories = [
 const featuredProjects = [
   {
     id: 1,
-    title: 'Dashboard Analytics Pro',
-    category: 'Full-stack & AI',
-    description: 'Plataforma de inteligência de dados em tempo real com gráficos dinâmicos, relatórios instantâneos e métricas preditivas.',
-    tags: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    id: 2,
-    title: 'SaaS E-Commerce Ecosystem',
-    category: 'Full-stack & Mobile',
-    description: 'Ecossistema completo de vendas online com suporte a pagamentos globais Stripe, checkout ultrarrápido e gestão de catálogo.',
-    tags: ['Next.js', 'Stripe', 'Tailwind', 'Redis'],
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+    title: 'Cadena Locações - Plataforma Web',
+    category: 'Full-stack & Cloud',
+    description: 'Modernização completa da plataforma web para a Cadena Locações, com novas funcionalidades de negócios, UI/UX intuitiva e otimização de orçamentos.',
+    tags: ['Java', 'Spring Boot', 'AWS', 'React', 'TypeScript'],
+    image: './Cadena.png',
   },
 ]
 
