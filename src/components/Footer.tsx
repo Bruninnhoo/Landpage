@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Code2, Github, Linkedin, Mail, ArrowUp, Heart, Sparkles } from './Icons'
+import { Github, Linkedin, Mail, ArrowUp, Sparkles } from './Icons'
 import './Footer.css'
 
 export default function Footer() {
@@ -11,26 +11,22 @@ export default function Footer() {
     <footer className="footer" id="main-footer">
       <div className="footer__glow-bg" />
       <div className="footer__container">
-        
+
         {/* Main Grid */}
         <div className="footer__top">
           {/* Col 1: Brand & Info */}
           <div className="footer__brand-col">
             <Link to="/" className="footer__logo">
-              <div className="footer__logo-icon">
-                <Code2 size={20} />
+              <div className="navbar__logo-avatar-wrap" style={{ width: 36, height: 36 }}>
+                <img src="/bruno-avatar.jpg" alt="Bruno Heyden" className="navbar__logo-img" />
               </div>
               <span className="footer__logo-text">
                 bruno<span className="footer__logo-dot">.dev</span>
               </span>
             </Link>
             <p className="footer__tagline">
-              Engenharia de software focada em alta performance, arquitetura escalável e interfaces de impacto.
+              Desenvolvedor de software especializado em criar soluções de alta performance e interfaces elegantes.
             </p>
-            <div className="footer__status">
-              <span className="footer__status-dot" />
-              <span>Disponível para novos projetos & contratos</span>
-            </div>
           </div>
 
           {/* Col 2: Navigation Links */}
@@ -62,26 +58,26 @@ export default function Footer() {
           <div className="footer__social-col">
             <h4 className="footer__col-title">Conectar</h4>
             <div className="footer__social-links">
-              <a 
-                href="https://github.com" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://github.com/brunoheyden"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="footer__social-btn"
                 aria-label="GitHub"
               >
                 <Github size={18} />
               </a>
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="footer__social-btn"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={18} />
               </a>
-              <a 
-                href="mailto:bruno@email.com" 
+              <a
+                href="mailto:brunoheyden@gmail.com"
                 className="footer__social-btn"
                 aria-label="Email"
               >
@@ -90,7 +86,7 @@ export default function Footer() {
             </div>
             <Link to="/contato" className="footer__cta-link">
               <Sparkles size={14} />
-              <span>Iniciar um projeto</span>
+              <span>Falar com o Bruno</span>
             </Link>
           </div>
         </div>
@@ -98,11 +94,11 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="footer__bottom">
           <p className="footer__copyright">
-            © {new Date().getFullYear()} Bruno. Desenvolvido com <Heart size={14} className="footer__heart-icon" /> e React.
+            © {new Date().getFullYear()} Bruno Heyden. Todos os direitos reservados.
           </p>
-          <button 
-            onClick={scrollToTop} 
-            className="footer__back-to-top" 
+          <button
+            onClick={scrollToTop}
+            className="footer__back-to-top"
             aria-label="Voltar ao topo"
             title="Voltar ao topo"
           >

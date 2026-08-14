@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FolderGit2, ExternalLink, Github, Sparkles, Filter, ArrowUpRight } from '../components/Icons'
+import { FolderGit2, Github, Sparkles, Filter, ArrowUpRight } from '../components/Icons'
 import './Projects.css'
 
 const projects = [
@@ -11,19 +11,23 @@ const projects = [
     tags: ['React 19', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind'],
     category: 'fullstack',
     featured: true,
-    link: 'https://example.com',
-    github: 'https://github.com',
+    link: 'https://github.com/brunoheyden',
+    github: 'https://github.com/brunoheyden',
+    challenge: 'Processar milhares de eventos em tempo real sem travar a interface do usuário.',
+    solution: 'Implementação de WebSockets com buffer no Redis e renderização otimizada no React 19.',
   },
   {
     id: 2,
-    title: 'E-Commerce Mobile & Web',
+    title: 'SaaS E-Commerce Ecosystem',
     description: 'Ecossistema completo de vendas online com catálogo responsivo, gateway de pagamento Stripe, gestão de estoque e notificações PWA.',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80',
     tags: ['Next.js', 'React Native', 'Stripe', 'MongoDB', 'Redis'],
     category: 'fullstack',
     featured: true,
-    link: 'https://example.com',
-    github: 'https://github.com',
+    link: 'https://github.com/brunoheyden',
+    github: 'https://github.com/brunoheyden',
+    challenge: 'Manter latência de checkout abaixo de 200ms em conexões móveis lentas.',
+    solution: 'Arquitetura Serverless no Next.js com caching de borda (Edge) e pré-carregamento estatístico de produtos.',
   },
   {
     id: 3,
@@ -33,8 +37,10 @@ const projects = [
     tags: ['Next.js', 'GraphQL', 'WebSocket', 'Redis', 'Tailwind'],
     category: 'frontend',
     featured: false,
-    link: 'https://example.com',
-    github: 'https://github.com',
+    link: 'https://github.com/brunoheyden',
+    github: 'https://github.com/brunoheyden',
+    challenge: 'Sincronização de estado de presença de milhares de usuários em tempo real.',
+    solution: 'Pub/Sub distribuído com Redis e subscrições GraphQL eficientes.',
   },
   {
     id: 4,
@@ -44,8 +50,10 @@ const projects = [
     tags: ['Node.js', 'Express', 'Docker', 'AWS ECS', 'Jest'],
     category: 'backend',
     featured: false,
-    link: 'https://example.com',
-    github: 'https://github.com',
+    link: 'https://github.com/brunoheyden',
+    github: 'https://github.com/brunoheyden',
+    challenge: 'Garantir resiliência contra ataques de força bruta e picos imprevisíveis de tráfego.',
+    solution: 'Algoritmo Leaky Bucket para rate limiting e rotação automática de chaves JWT RSA-256.',
   },
   {
     id: 5,
@@ -55,8 +63,10 @@ const projects = [
     tags: ['React', 'TypeScript', 'Supabase', 'Tailwind', 'Zustand'],
     category: 'fullstack',
     featured: false,
-    link: 'https://example.com',
-    github: 'https://github.com',
+    link: 'https://github.com/brunoheyden',
+    github: 'https://github.com/brunoheyden',
+    challenge: 'Arraste-e-solte (Drag & Drop) ultra fluido com atualização otimista de estado.',
+    solution: 'Integração de Zustand com atualizações otimistas no Supabase Realtime DB.',
   },
   {
     id: 6,
@@ -66,8 +76,10 @@ const projects = [
     tags: ['Python', 'FastAPI', 'React', 'Chart.js', 'PostgreSQL'],
     category: 'frontend',
     featured: false,
-    link: 'https://example.com',
-    github: 'https://github.com',
+    link: 'https://github.com/brunoheyden',
+    github: 'https://github.com/brunoheyden',
+    challenge: 'Categorizar milhares de extratos bancários com precisão utilizando modelos de ML.',
+    solution: 'Serviço em FastAPI assíncrono consumindo embeddings via scikit-learn.',
   },
 ]
 
@@ -80,6 +92,7 @@ const filters = [
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('all')
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null)
 
   const filteredProjects = activeFilter === 'all'
     ? projects
@@ -96,15 +109,15 @@ export default function Projects() {
       <section className="projects-header" id="projects-header">
         <div className="projects-header__container">
           <span className="section-tag animate-fade-in-up">
-            <FolderGit2 size={14} /> Portfólio & Trabalhos
+            <FolderGit2 size={14} /> Meus Projetos & Estudos de Caso
           </span>
           <h1 className="projects-header__title animate-fade-in-up delay-1">
             Soluções digitais <br />
-            <span className="gradient-amber-text">construídas com precisão</span>.
+            <span className="gradient-amber-text">construídas por mim</span>.
           </h1>
           <p className="projects-header__text animate-fade-in-up delay-2">
-            Galeria de projetos reais demonstrando domínio em arquitetura web, 
-            design de interface e otimização de performance.
+            Aqui você encontra uma seleção de projetos que desenvolvi. Clique em qualquer projeto para 
+            ver detalhes sobre o desafio técnico e a solução adotada.
           </p>
         </div>
       </section>
@@ -138,28 +151,17 @@ export default function Projects() {
               id={`project-${project.id}`}
             >
               {/* Image Preview */}
-              <div className="project-card__image-wrapper">
+              <div className="project-card__image-wrapper" onClick={() => setSelectedProject(project)}>
                 <img src={project.image} alt={project.title} className="project-card__image" />
                 <div className="project-card__overlay">
                   <div className="project-card__actions">
-                    <a 
-                      href={project.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    <button 
+                      onClick={() => setSelectedProject(project)}
                       className="btn btn--primary project-card__btn"
                     >
-                      <ExternalLink size={16} />
-                      <span>Ver Demo</span>
-                    </a>
-                    <a 
-                      href={project.github} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="btn btn--outline project-card__btn"
-                    >
-                      <Github size={16} />
-                      <span>Código</span>
-                    </a>
+                      <Sparkles size={16} />
+                      <span>Detalhes Técnicos</span>
+                    </button>
                   </div>
                 </div>
                 {project.featured && (
@@ -172,16 +174,16 @@ export default function Projects() {
               {/* Card Body */}
               <div className="project-card__content">
                 <div className="project-card__header">
-                  <h3 className="project-card__title">{project.title}</h3>
-                  <a 
-                    href={project.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <h3 className="project-card__title" onClick={() => setSelectedProject(project)} style={{ cursor: 'pointer' }}>
+                    {project.title}
+                  </h3>
+                  <button 
+                    onClick={() => setSelectedProject(project)}
                     className="project-card__icon-link"
-                    title="Ver projeto"
+                    title="Ver detalhes do projeto"
                   >
                     <ArrowUpRight size={18} />
-                  </a>
+                  </button>
                 </div>
 
                 <p className="project-card__description">{project.description}</p>
@@ -199,6 +201,49 @@ export default function Projects() {
           ))}
         </div>
       </section>
+
+      {/* Project Details Modal */}
+      {selectedProject && (
+        <div className="project-modal-backdrop" onClick={() => setSelectedProject(null)}>
+          <div className="project-modal glass-panel" onClick={(e) => e.stopPropagation()}>
+            <button className="project-modal__close" onClick={() => setSelectedProject(null)}>×</button>
+            <div className="project-modal__header">
+              <span className="tech-pill">{selectedProject.category.toUpperCase()}</span>
+              <h2>{selectedProject.title}</h2>
+            </div>
+            <img src={selectedProject.image} alt={selectedProject.title} className="project-modal__img" />
+            <div className="project-modal__body">
+              <p className="project-modal__desc">{selectedProject.description}</p>
+              
+              <div className="project-modal__section">
+                <h4>🎯 O Desafio Técnico:</h4>
+                <p>{selectedProject.challenge}</p>
+              </div>
+
+              <div className="project-modal__section">
+                <h4>⚡ A Solução Aplicada:</h4>
+                <p>{selectedProject.solution}</p>
+              </div>
+
+              <div className="project-modal__tags">
+                {selectedProject.tags.map(t => (
+                  <span key={t} className="tech-pill tech-pill--sm">{t}</span>
+                ))}
+              </div>
+
+              <div className="project-modal__actions">
+                <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="btn btn--primary">
+                  <Github size={16} />
+                  <span>Ver Repositório no GitHub</span>
+                </a>
+                <button onClick={() => setSelectedProject(null)} className="btn btn--outline">
+                  <span>Fechar</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   )

@@ -1,31 +1,37 @@
 import { useState, type FormEvent } from 'react'
-import { Mail, MapPin, Github, Linkedin, Clock, Copy, Check, Send, MessageSquare, CheckCircle2 } from '../components/Icons'
+import { Mail, MapPin, Github, Linkedin, Clock, Copy, Check, Send, MessageSquare, CheckCircle2, WhatsApp } from '../components/Icons'
 import './Contact.css'
 
 const contactChannels = [
   {
     icon: Mail,
     label: 'E-mail Direto',
-    value: 'bruno@email.com',
+    value: 'brunoheyden@gmail.com',
     action: 'copy',
   },
   {
     icon: MapPin,
     label: 'Localização',
-    value: 'São Paulo, Brasil (Remoto / Presencial)',
+    value: 'São Paulo, Brasil (Remoto / Híbrido)',
     action: null,
   },
   {
     icon: Github,
-    label: 'GitHub',
-    value: 'github.com/bruno',
-    link: 'https://github.com',
+    label: 'GitHub Pessoal',
+    value: 'github.com/Bruninnhoo',
+    link: 'https://github.com/Bruninnhoo',
   },
   {
     icon: Linkedin,
     label: 'LinkedIn',
-    value: 'linkedin.com/in/bruno',
-    link: 'https://linkedin.com',
+    value: 'linkedin.com/in/bruno-heyden-13311a25a',
+    link: 'https://www.linkedin.com/in/bruno-heyden-13311a25a/',
+  },
+  {
+    icon: WhatsApp,
+    label: 'WhatsApp',
+    value: '+55 (12)99667-1945',
+    link: 'https://wa.me/5511999999999',
   },
 ]
 
@@ -34,6 +40,21 @@ const budgetRanges = [
   'R$ 5k - 15k',
   'R$ 15k - 30k',
   'R$ 30k+',
+]
+
+const faqs = [
+  {
+    q: 'Qual o seu modelo de contratação preferido?',
+    a: 'Atuo como desenvolvedor Freelance (PJ) para projetos sob medida, ou posições Full-time remotas.'
+  },
+  {
+    q: 'Em quanto tempo você costuma entregar uma landing page ou SaaS inicial?',
+    a: 'Landing pages de alta conversão costumam levar de 3 a 7 dias. Protótipos SaaS funcionais de 2 a 4 semanas, a depender do escopo.'
+  },
+  {
+    q: 'Você realiza manutenção e suporte pós-entrega?',
+    a: 'Sim! Todos os meus projetos contam com garantia de suporte pós-lançamento para ajustes finos e treinamento da equipe.'
+  }
 ]
 
 export default function Contact() {
@@ -49,7 +70,7 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const copyEmail = () => {
-    navigator.clipboard.writeText('bruno@email.com')
+    navigator.clipboard.writeText('brunoheyden@gmail.com')
     setCopied(true)
     setTimeout(() => setCopied(false), 2500)
   }
@@ -57,7 +78,7 @@ export default function Contact() {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
+
     setTimeout(() => {
       setIsSubmitting(false)
       setSubmitted(true)
@@ -68,7 +89,7 @@ export default function Contact() {
 
   return (
     <div className="contact" id="contact-page">
-      
+
       {/* Ambient Glows */}
       <div className="contact__glow contact__glow--cyan" />
       <div className="contact__glow contact__glow--violet" />
@@ -77,15 +98,15 @@ export default function Contact() {
       <section className="contact-header" id="contact-header">
         <div className="contact-header__container">
           <span className="section-tag animate-fade-in-up">
-            <MessageSquare size={14} /> Contato & Orçamento
+            <MessageSquare size={14} /> Fale comigo
           </span>
           <h1 className="contact-header__title animate-fade-in-up delay-1">
             Vamos iniciar uma <br />
-            <span className="gradient-amber-text">parceria de sucesso</span>.
+            <span className="gradient-amber-text">conversa sobre o seu projeto</span>.
           </h1>
           <p className="contact-header__text animate-fade-in-up delay-2">
-            Tem um projeto, ideia de produto ou precisa de consultoria em desenvolvimento? 
-            Envie uma mensagem e receba um retorno em até 24 horas.
+            Tem uma ideia de produto, precisa desenvolver um software web ou deseja contratar para sua equipe?
+            Mande uma mensagem direta e receba meu retorno rápido.
           </p>
         </div>
       </section>
@@ -93,13 +114,13 @@ export default function Contact() {
       {/* Main Form & Info Section */}
       <section className="contact-content" id="contact-content">
         <div className="contact-content__container">
-          
+
           {/* Left Column: Direct Info & Social Cards */}
           <div className="contact-info animate-fade-in-up delay-1">
             <div className="contact-info__header">
               <h2 className="contact-info__title">Canais Diretos</h2>
               <p className="contact-info__subtitle">
-                Fique à vontade para me contatar pelo formulário ao lado ou diretamente pelas redes abaixo.
+                Escolha o canal de sua preferência para me contatar. Responderei o mais rápido possível.
               </p>
             </div>
 
@@ -138,7 +159,7 @@ export default function Contact() {
               </div>
               <div>
                 <h4 className="availability-box__title">Tempo Médio de Resposta</h4>
-                <p className="availability-box__sub">Atendimento rápido em menos de 24 horas úteis.</p>
+                <p className="availability-box__sub">Respondo geralmente em poucas horas (máximo 24h úteis).</p>
               </div>
             </div>
           </div>
@@ -146,32 +167,32 @@ export default function Contact() {
           {/* Right Column: Contact Form */}
           <div className="contact-form-wrapper animate-fade-in-up delay-2">
             <div className="contact-form-card glass-panel">
-              
+
               {submitted ? (
                 <div className="form-success-banner">
                   <div className="form-success-icon">
                     <CheckCircle2 size={48} />
                   </div>
                   <h3>Mensagem Enviada com Sucesso!</h3>
-                  <p>Obrigado pelo contato. Responderei seu e-mail o mais breve possível com os próximos passos.</p>
+                  <p>Obrigado pelo contato, Bruno recebeu sua mensagem e responderá em breve pelo seu e-mail!</p>
                 </div>
               ) : (
                 <form className="contact-form" onSubmit={handleSubmit} id="contact-form">
                   <div className="contact-form__header">
-                    <h3 className="contact-form__title">Envie sua Mensagem</h3>
-                    <p className="contact-form__subtitle">Preencha os dados abaixo para alinhar os detalhes do seu projeto.</p>
+                    <h3 className="contact-form__title">Enviar Mensagem Direta</h3>
+                    <p className="contact-form__subtitle">Preencha os detalhes abaixo para conversarmos.</p>
                   </div>
 
                   <div className="contact-form__grid">
                     <div className="contact-form__group">
-                      <label htmlFor="name" className="contact-form__label">Nome Completo</label>
+                      <label htmlFor="name" className="contact-form__label">Seu Nome</label>
                       <input
                         type="text"
                         id="name"
                         className="contact-form__input"
-                        placeholder="Ex: Ana Silva"
+                        placeholder="Ex: Carlos Andrade"
                         value={formData.name}
-                        onChange={(e) => setFormData({...formData, name: e.target.value})}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         required
                       />
                     </div>
@@ -182,9 +203,9 @@ export default function Contact() {
                         type="email"
                         id="email"
                         className="contact-form__input"
-                        placeholder="ana@empresa.com"
+                        placeholder="carlos@empresa.com"
                         value={formData.email}
-                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         required
                       />
                     </div>
@@ -196,23 +217,23 @@ export default function Contact() {
                       type="text"
                       id="subject"
                       className="contact-form__input"
-                      placeholder="Ex: Desenvolvimento de Novo Produto SaaS"
+                      placeholder="Ex: Projeto SaaS / Oportunidade Dev"
                       value={formData.subject}
-                      onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       required
                     />
                   </div>
 
                   {/* Budget Chips */}
                   <div className="contact-form__group">
-                    <label className="contact-form__label">Estimativa de Orçamento</label>
+                    <label className="contact-form__label">Faixa de Orçamento Estimada</label>
                     <div className="budget-chips">
                       {budgetRanges.map((range) => (
                         <button
                           key={range}
                           type="button"
                           className={`budget-chip ${formData.budget === range ? 'budget-chip--active' : ''}`}
-                          onClick={() => setFormData({...formData, budget: range})}
+                          onClick={() => setFormData({ ...formData, budget: range })}
                         >
                           {range}
                         </button>
@@ -221,30 +242,30 @@ export default function Contact() {
                   </div>
 
                   <div className="contact-form__group">
-                    <label htmlFor="message" className="contact-form__label">Detalhes da Ideia ou Projeto</label>
+                    <label htmlFor="message" className="contact-form__label">Mensagem / Detalhes do Projeto</label>
                     <textarea
                       id="message"
                       className="contact-form__input contact-form__textarea"
-                      placeholder="Descreva os objetivos principais, prazo estimado e requisitos do sistema..."
+                      placeholder="Descreva brevemente o que você precisa ou a oportunidade..."
                       rows={5}
                       value={formData.message}
-                      onChange={(e) => setFormData({...formData, message: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       required
                     />
                   </div>
 
-                  <button 
-                    type="submit" 
-                    className="btn btn--primary contact-form__submit-btn" 
+                  <button
+                    type="submit"
+                    className="btn btn--primary contact-form__submit-btn"
                     disabled={isSubmitting}
                     id="contact-submit"
                   >
                     {isSubmitting ? (
-                      <span>Enviando...</span>
+                      <span>Enviando mensagem...</span>
                     ) : (
                       <>
                         <Send size={18} />
-                        <span>Enviar Proposta</span>
+                        <span>Enviar para o Bruno</span>
                       </>
                     )}
                   </button>
@@ -254,6 +275,24 @@ export default function Contact() {
             </div>
           </div>
 
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="contact-faq" id="contact-faq">
+        <div className="contact-faq__container">
+          <div className="section-header text-center">
+            <span className="section-tag">Dúvidas Frequentes</span>
+            <h2 className="section-title">Perguntas Comuns</h2>
+          </div>
+          <div className="contact-faq__grid">
+            {faqs.map(faq => (
+              <div key={faq.q} className="faq-card glass-card">
+                <h4>{faq.q}</h4>
+                <p>{faq.a}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

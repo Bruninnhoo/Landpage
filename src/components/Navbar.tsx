@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Home, User, FolderGit2, Mail, Sparkles, Menu, X, Code2 } from './Icons'
+import { Home, User, FolderGit2, Mail, Sparkles, Menu, X } from './Icons'
 import './Navbar.css'
 
 const navLinks = [
@@ -31,8 +31,9 @@ export default function Navbar() {
         <div className="navbar__container">
           {/* Brand Logo */}
           <Link to="/" className="navbar__logo" id="nav-logo">
-            <div className="navbar__logo-icon">
-              <Code2 size={20} />
+            <div className="navbar__logo-avatar-wrap">
+              <img src="/bruno-avatar.jpg" alt="Bruno Heyden" className="navbar__logo-img" />
+              <span className="navbar__status-dot" title="Disponível para projetos" />
             </div>
             <span className="navbar__logo-text">
               bruno<span className="navbar__logo-dot">.dev</span>

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { User, Briefcase, Award, GraduationCap, Download, CheckCircle2, Code2, Sparkles, Terminal } from '../components/Icons'
 import './About.css'
 
@@ -26,25 +27,25 @@ const skillCategories = [
 
 const timeline = [
   {
-    year: '2024 - Presente',
-    title: 'Desenvolvedor Full-stack Sênior',
-    company: 'Consultoria / Freelance',
-    description: 'Arquitetura e desenvolvimento de aplicações SaaS modernas de alta escala. Foco em código limpo, otimização de performance e interfaces intuitivas.',
-    highlights: ['Liderou a migration de monolito para microsserviços', 'Otimizou tempo de carregamento em 65%'],
-  },
-  {
-    year: '2023 - 2024',
-    title: 'Desenvolvedor Full-stack',
-    company: 'Tech Solutions Inc.',
-    description: 'Construção de APIs escaláveis em Node.js e dashboards analíticos em tempo real com React e TypeScript.',
-    highlights: ['Integração de gateway de pagamento Stripe', 'Implementação de autenticação JWT/OAuth2'],
-  },
-  {
-    year: '2022 - 2023',
+    year: '2026 - Presente',
     title: 'Desenvolvedor Front-end',
-    company: 'Agência Digital Innovate',
-    description: 'Criação de landing pages e plataformas web responsivas focadas em experiência do usuário e otimização SEO.',
-    highlights: ['Desenvolvimento de mais de 20 sites responsivos', 'Pontuação 98+ no Google Lighthouse'],
+    company: 'Residere Imóveis (Freelancer)',
+    description: 'Desenvolvimento e otimização de interfaces web modernas para o setor imobiliário, focando em experiência do usuário e alta conversão.',
+    highlights: ['Criação de componentes reusáveis e responsivos em React', 'Otimização de SEO e tempo de carregamento de páginas'],
+  },
+  {
+    year: '2025 - 2026',
+    title: 'Desenvolvedor Full-stack',
+    company: 'CadenaLocações (Freelancer)',
+    description: 'Construção completa de sistemas e plataformas web para gerenciamento de locações, englobando front-end, APIs e banco de dados.',
+    highlights: ['Desenvolvimento de painéis administrativos e dashboards', 'Integração de serviços e gestão de dados em tempo real'],
+  },
+  {
+    year: '2024 - 2025',
+    title: 'Desenvolvedor de Scripts FiveM',
+    company: 'Freelancer',
+    description: 'Criação e programação de scripts customizados NUI (React/JS + Lua) e sistemas interativos para servidores de FiveM.',
+    highlights: ['Interfaces NUI fluidas com comunicação eficiente via WebSockets/Events', 'Código altamente otimizado para baixo consumo de memória (0.00ms resmon)'],
   },
 ]
 
@@ -55,10 +56,33 @@ const coreValues = [
   { title: 'Design Centrado no Usuário', desc: 'Interfaces intuitivas com micro-interações dinâmicas e acessibilidade.' },
 ]
 
+const personalInterests = [
+  { icon: '🎮', title: 'Jogar', desc: 'Entusiasta de games, explorando diferentes gêneros e narrativas interativas nos momentos de descanso.' },
+  { icon: '🎧', title: 'Ouvir Música', desc: 'Sempre acompanhado de uma boa trilha sonora para focar no código, relaxar e buscar inspiração.' },
+  { icon: '🖥️', title: 'Customização & Setup', desc: 'Paixão por otimizar a estação de trabalho, atalhos de teclado, rotinas no terminal e estética de software.' },
+  { icon: '🎸', title: 'Tocar Instrumentos', desc: 'Expressão criativa através da música, desenvolvendo foco, ritmo e disciplina fora do ambiente de desenvolvimento.' },
+]
+
 export default function About() {
+  const [downloadedCV, setDownloadedCV] = useState(false)
+
+  const handleDownloadCV = (e: React.MouseEvent) => {
+    e.preventDefault()
+    setDownloadedCV(true)
+    setTimeout(() => setDownloadedCV(false), 3000)
+
+    // Trigger synthetic download or alert
+    const link = document.createElement('a')
+    link.href = '/bruno-avatar.jpg'
+    link.download = 'Bruno_Heyden_Desenvolvedor_CV.jpg'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   return (
     <div className="about" id="about-page">
-      
+
       {/* Background Lights */}
       <div className="about__glow about__glow--cyan" />
       <div className="about__glow about__glow--violet" />
@@ -67,15 +91,15 @@ export default function About() {
       <section className="about-header" id="about-header">
         <div className="about-header__container">
           <span className="section-tag animate-fade-in-up">
-            <User size={14} /> Sobre Mim
+            <User size={14} /> Minha História
           </span>
           <h1 className="about-header__title animate-fade-in-up delay-1">
-            Trajetória, princípios & <br />
+            Trajetória, paixão por tecnologia & <br />
             <span className="gradient-amber-text">engenharia de produto</span>.
           </h1>
           <p className="about-header__text animate-fade-in-up delay-2">
-            Desenvolvedor comprometido em criar soluções de software elegantes, 
-            combinando rigor técnico no código com refinamento estético na interface.
+            Desenvolvedor comprometido em criar soluções de software elegantes,
+            combinando rigor técnico com excelente experiência de uso.
           </p>
         </div>
       </section>
@@ -83,17 +107,15 @@ export default function About() {
       {/* Bio Section */}
       <section className="about-bio" id="about-bio">
         <div className="about-bio__container">
-          
+
           {/* Avatar / Visual Frame */}
           <div className="about-bio__visual animate-fade-in-up delay-1">
             <div className="about-bio__image-frame glass-panel">
-              <div className="about-bio__avatar-placeholder">
-                <div className="avatar-icon-wrapper">
-                  <User size={64} className="avatar-icon" />
-                </div>
+              <div className="about-bio__avatar-wrapper">
+                <img src="/bruno-avatar.jpg" alt="Bruno Heyden" className="about-bio__avatar-img" />
                 <div className="avatar-badge">
                   <Sparkles size={16} />
-                  <span>Senior Developer</span>
+                  <span>Full-Stack Engineer</span>
                 </div>
               </div>
             </div>
@@ -105,25 +127,29 @@ export default function About() {
               Engenharia robusta alimentada por <span className="gradient-amber-text">design intencional</span>.
             </h2>
             <p className="about-bio__paragraph">
-              Com mais de 5 anos criando produtos para a web, minha abordagem une o desenvolvimento 
-              full-stack à paixão pela experiência do usuário. Acredito que um software excelente 
-              deve ser invisível na sua complexidade e evidente em sua facilidade de uso.
+              Meu nome é <strong>Bruno Heyden</strong>. Minha jornada na programação começou pela curiosidade em
+              entender como as aplicações web funcionam nos bastidores. Desde então, transformei essa paixão em profissão.
             </p>
             <p className="about-bio__paragraph">
-              Trabalho do planejamento de arquitetura de banco de dados e APIs REST/GraphQL 
-              até a construção de componentes de interface altamente responsivos e animados.
+              Para mim, escrever código vai além de fazer telas funcionarem: trata-se de criar soluções
+              previsíveis, limpas e que realmente ajudem pessoas e empresas a atingirem seus objetivos.
+              Gosto de dominar todo o ciclo de desenvolvimento — da arquitetura da API no backend até
+              as micro-interações do front-end.
             </p>
 
             {/* Action CV */}
             <div className="about-bio__actions">
-              <a 
-                href="#" 
-                onClick={(e) => { e.preventDefault(); alert('Download de currículo iniciado!') }} 
-                className="btn btn--primary" 
+              <button
+                onClick={handleDownloadCV}
+                className="btn btn--primary"
                 id="about-download-cv"
               >
                 <Download size={18} />
-                <span>Baixar Currículo (PDF)</span>
+                <span>{downloadedCV ? 'Baixando CV...' : 'Baixar Currículo (CV)'}</span>
+              </button>
+
+              <a href="mailto:brunoheyden@gmail.com" className="btn btn--outline">
+                <span>Falar Diretamente</span>
               </a>
             </div>
           </div>
@@ -136,10 +162,10 @@ export default function About() {
         <div className="about-values__container">
           <div className="section-header text-center">
             <span className="section-tag">
-              <GraduationCap size={14} /> Filosofia de Trabalho
+              <GraduationCap size={14} /> Filosofia Pessoal
             </span>
             <h2 className="section-title">
-              Princípios de <span className="gradient-amber-text">Desenvolvimento</span>
+              Princípios que <span className="gradient-amber-text">Orientam Meu Trabalho</span>
             </h2>
           </div>
 
@@ -151,6 +177,33 @@ export default function About() {
                   <h3>{val.title}</h3>
                 </div>
                 <p>{val.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Personal Interests / Lado Pessoal Section */}
+      <section className="about-personal" id="personal-interests">
+        <div className="about-personal__container">
+          <div className="section-header text-center">
+            <span className="section-tag">
+              <Sparkles size={14} /> Além do Código
+            </span>
+            <h2 className="section-title">
+              Lado Pessoal & <span className="gradient-amber-text">Interesses</span>
+            </h2>
+            <p className="section-subtitle">
+              O que me inspira e me mantém motivado fora do terminal de desenvolvimento.
+            </p>
+          </div>
+
+          <div className="personal-interests-grid">
+            {personalInterests.map((interest, i) => (
+              <div key={interest.title} className={`personal-interest-card glass-card animate-fade-in-up delay-${i + 1}`}>
+                <div className="personal-interest-icon">{interest.icon}</div>
+                <h3>{interest.title}</h3>
+                <p>{interest.desc}</p>
               </div>
             ))}
           </div>
@@ -201,7 +254,7 @@ export default function About() {
             <span className="section-tag">
               <Briefcase size={14} /> Carreira
             </span>
-            <h2 className="section-title">Experiência Profissional</h2>
+            <h2 className="section-title">Minha Trajetória Profissional</h2>
           </div>
 
           <div className="timeline__list">

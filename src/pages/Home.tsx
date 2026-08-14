@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import {
   ArrowRight,
   Sparkles,
-  Terminal,
-  CheckCircle2,
   Copy,
   Check,
   Layers,
@@ -12,15 +10,7 @@ import {
   Database,
   Server,
   Globe,
-  Zap,
-  Star,
   ExternalLink,
-  ShieldCheck,
-  Activity,
-  Clock,
-  MapPin,
-  Flame,
-  LayoutGrid
 } from '../components/Icons'
 import TechMarquee from '../components/TechMarquee'
 import {
@@ -106,7 +96,6 @@ const featuredProjects = [
 
 export default function Home() {
   const [copied, setCopied] = useState(false)
-  const [activeConsoleTab, setActiveConsoleTab] = useState<'stack' | 'arch' | 'perf'>('stack')
   const [currentTime, setCurrentTime] = useState('')
 
   useEffect(() => {
@@ -132,23 +121,30 @@ export default function Home() {
       <section className="hero" id="hero-section">
         <div className="hero__container">
 
-          {/* Left Column: Hero Copy */}
+          {/* Left Column: Personal Hero Intro */}
           <div className="hero__content">
 
+            <div className="hero__author-greeting animate-fade-in-up delay-1">
+              <div className="hero__author-text">
+                <span className="hero__author-name">Bruno Heyden</span>
+                <span className="hero__greeting-tag">Desenvolvedor Full-Stack & UI Specialist</span>
+              </div>
+            </div>
+
             <h1 className="hero__title animate-fade-in-up delay-2">
-              Engenharia de Software de Alta Precisão & <br />
-              <span className="gradient-text">Interfaces Limpas</span>.
+              Transformo conceitos em<br />
+              <span className="gradient-text">produtos digitais</span>.
             </h1>
 
             <p className="hero__description animate-fade-in-up delay-3">
-              Olá, me chamo <strong>Bruno</strong>. Sou desenvolvedor Full-stack focado em construir
-              produtos digitais velozes, escaláveis e com design elegante.
+              Olá, sou <strong>Bruno Heyden</strong>, um desenvolvedor que ama criar produtos digitais. Combino engenharia de software rigorosa com sensibilidade de design para criar
+              aplicações web velozes, escaláveis e intuitivas. Focado em ecossistemas
+              <strong> React, Next.js, Node.js e TypeScript</strong>.
             </p>
-
             {/* Actions & Quick Contact */}
             <div className="hero__actions animate-fade-in-up delay-4">
               <Link to="/projetos" className="btn btn--primary" id="hero-cta-projects">
-                <span>Explorar Projetos</span>
+                <span>Ver Portfólio</span>
                 <ArrowRight size={18} />
               </Link>
 
@@ -168,157 +164,24 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right Column: Interactive Engineering Craft Console */}
+          {/* Right Column: Sleek Personal Developer Showcase */}
           <div className="hero__visual animate-fade-in-up delay-3">
-            <div className="craft-console glass-panel">
-
-              {/* Console Header Tabs */}
-              <div className="craft-console__header">
-                <div className="craft-console__tabs">
-                  <button
-                    className={`craft-console__tab ${activeConsoleTab === 'stack' ? 'craft-console__tab--active' : ''}`}
-                    onClick={() => setActiveConsoleTab('stack')}
-                  >
-                    <Cpu size={14} />
-                    <span>Stack Matrix</span>
-                  </button>
-                  <button
-                    className={`craft-console__tab ${activeConsoleTab === 'arch' ? 'craft-console__tab--active' : ''}`}
-                    onClick={() => setActiveConsoleTab('arch')}
-                  >
-                    <ShieldCheck size={14} />
-                    <span>Arquitetura</span>
-                  </button>
-                  <button
-                    className={`craft-console__tab ${activeConsoleTab === 'perf' ? 'craft-console__tab--active' : ''}`}
-                    onClick={() => setActiveConsoleTab('perf')}
-                  >
-                    <Activity size={14} />
-                    <span>Performance</span>
-                  </button>
-                </div>
+            <div className="hero__portrait-card glass-card">
+              <div className="hero__portrait-frame">
+                <img src="/bruno-avatar.jpg" alt="Bruno Heyden" className="hero__portrait-img" />
+                <div className="hero__portrait-overlay-glow" />
               </div>
 
-              {/* Console Content Body */}
-              <div className="craft-console__body">
-                {activeConsoleTab === 'stack' && (
-                  <div className="console-panel animate-fade-in-up">
-                    <div className="console-panel__title-row">
-                      <Terminal size={16} className="text-accent" />
-                      <span className="console-panel__label">Tecnologias Primárias & Logos</span>
-                    </div>
-                    <div className="console-stack-list">
-                      <div className="console-stack-item">
-                        <div className="console-stack-item__header">
-                          <div className="console-stack-brand">
-                            <ReactLogo size={20} />
-                            <span className="console-stack-item__name">React 19 & TypeScript</span>
-                          </div>
-                          <span className="console-stack-pill">UI Core</span>
-                        </div>
-                        <p className="console-stack-item__desc">Componentes modulares com tipagem estrita e state management previsível.</p>
-                      </div>
-                      <div className="console-stack-item">
-                        <div className="console-stack-item__header">
-                          <div className="console-stack-brand">
-                            <NodejsLogo size={20} />
-                            <span className="console-stack-item__name">Node.js & PostgreSQL</span>
-                          </div>
-                          <span className="console-stack-pill">Backend</span>
-                        </div>
-                        <p className="console-stack-item__desc">APIs RESTful resilientes, microsserviços e modelagem relacional otimizada.</p>
-                      </div>
-                      <div className="console-stack-item">
-                        <div className="console-stack-item__header">
-                          <div className="console-stack-brand">
-                            <DockerLogo size={20} />
-                            <span className="console-stack-item__name">Docker & CI/CD Pipelines</span>
-                          </div>
-                          <span className="console-stack-pill">Infra</span>
-                        </div>
-                        <p className="console-stack-item__desc">Deploy automatizado, contêineres e infraestrutura escalável.</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {activeConsoleTab === 'arch' && (
-                  <div className="console-panel animate-fade-in-up">
-                    <div className="console-panel__title-row">
-                      <ShieldCheck size={16} className="text-emerald" />
-                      <span className="console-panel__label">Pilares de Engenharia</span>
-                    </div>
-                    <div className="console-arch-grid">
-                      <div className="console-arch-card">
-                        <h4>Clean Code</h4>
-                        <p>Separação rigorosa de responsabilidades e alta legibilidade.</p>
-                      </div>
-                      <div className="console-arch-card">
-                        <h4>Zero Latency</h4>
-                        <p>Renderização otimizada e requisições ultrarrápidas.</p>
-                      </div>
-                      <div className="console-arch-card">
-                        <h4>Test-Driven</h4>
-                        <p>Validação automatizada para estabilidade em produção.</p>
-                      </div>
-                      <div className="console-arch-card">
-                        <h4>Acessibilidade</h4>
-                        <p>Semântica HTML5 rigorosa e conformidade WCAG.</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {activeConsoleTab === 'perf' && (
-                  <div className="console-panel animate-fade-in-up">
-                    <div className="console-panel__title-row">
-                      <Activity size={16} className="text-accent" />
-                      <span className="console-panel__label">Auditoria de Desempenho (Lighthouse)</span>
-                    </div>
-                    <div className="console-perf-scores">
-                      <div className="console-perf-circle">
-                        <span className="score">100</span>
-                        <span className="label">Performance</span>
-                      </div>
-                      <div className="console-perf-circle">
-                        <span className="score">100</span>
-                        <span className="label">Acessibilidade</span>
-                      </div>
-                      <div className="console-perf-circle">
-                        <span className="score">100</span>
-                        <span className="label">SEO</span>
-                      </div>
-                    </div>
-                    <div className="console-perf-metrics">
-                      <div className="metric-row">
-                        <span>First Contentful Paint (FCP)</span>
-                        <span className="val text-emerald">0.4s</span>
-                      </div>
-                      <div className="metric-row">
-                        <span>Time to Interactive (TTI)</span>
-                        <span className="val text-emerald">0.6s</span>
-                      </div>
-                      <div className="metric-row">
-                        <span>Bundle Size (Gzipped)</span>
-                        <span className="val text-accent">42 kB</span>
-                      </div>
-                    </div>
-                  </div>
-                )}
+              {/* Floating Badges */}
+              <div className="floating-badge floating-badge--top-right animate-bounce-subtle">
+                <Sparkles size={16} className="text-accent" />
+                <span>Full-Stack Developer</span>
               </div>
 
-              {/* Console Footer */}
-              <div className="craft-console__footer">
-                <div className="craft-console__stat">
-                  <CheckCircle2 size={15} className="text-emerald" />
-                  <span>Código Auditado</span>
-                </div>
-                <div className="craft-console__stat">
-                  <Flame size={15} className="text-accent" />
-                  <span>Sub-100ms API Latency</span>
-                </div>
+              <div className="floating-badge floating-badge--bottom-left">
+                <span className="hero__status-pulse" />
+                <span>São Paulo, BR • {currentTime || 'Disponível'}</span>
               </div>
-
             </div>
           </div>
 
@@ -328,102 +191,18 @@ export default function Home() {
       {/* Infinite Continuous Scrolling Tech Marquee Ribbon */}
       <TechMarquee />
 
-      {/* Asymmetric Bento Showcase Grid Section */}
-      <section className="bento-section" id="bento-section">
-        <div className="bento-section__container">
-
-          <div className="section-header text-center">
-            <span className="section-tag">
-              <LayoutGrid size={14} /> Panorama Geral
-            </span>
-            <h2 className="section-title">
-              Engenharia, <span className="gradient-text">Métricas & Presença</span>
-            </h2>
-          </div>
-
-          <div className="bento-grid">
-
-            {/* Bento Box 1: Core Engineering Value */}
-            <div className="bento-card bento-card--large glass-card">
-              <div className="bento-card__icon-badge">
-                <Zap size={22} className="text-accent" />
-              </div>
-              <h3 className="bento-card__title">Abordagem de Desenvolvimento</h3>
-              <p className="bento-card__desc">
-                Combino rigor técnico no código com foco em simplicidade na interface. Cada componente é desenvolvido com responsividade nativa, tipagem TypeScript estrita e navegação leve.
-              </p>
-              <div className="bento-card__highlights">
-                <span className="bento-pill">
-                  <CheckCircle2 size={14} className="text-emerald" /> Componentes Reutilizáveis
-                </span>
-                <span className="bento-pill">
-                  <CheckCircle2 size={14} className="text-emerald" /> APIs RESTful & GraphQL
-                </span>
-                <span className="bento-pill">
-                  <CheckCircle2 size={14} className="text-emerald" /> Design System Intencional
-                </span>
-              </div>
-            </div>
-
-            {/* Bento Box 2: Timezone & Status */}
-            <div className="bento-card glass-card">
-              <div className="bento-card__icon-badge">
-                <Clock size={20} className="text-emerald" />
-              </div>
-              <span className="bento-card__label">Fuso Horário & Local</span>
-              <div className="bento-card__time-display">
-                <span className="time-val">{currentTime || '14:08'}</span>
-                <span className="time-tz">BRT (UTC-3)</span>
-              </div>
-              <p className="bento-card__location-text">
-                <MapPin size={14} className="text-accent" /> São Paulo, Brasil — Remoto & Presencial
-              </p>
-            </div>
-
-            {/* Bento Box 3: Stats Grid inside Bento */}
-            <div className="bento-card glass-card">
-              <div className="bento-stats-grid">
-                <div className="bento-stat">
-                  <span className="bento-stat__value">5+</span>
-                  <span className="bento-stat__label">Anos de Experiência</span>
-                </div>
-                <div className="bento-stat">
-                  <span className="bento-stat__value">35+</span>
-                  <span className="bento-stat__label">Projetos Entregues</span>
-                </div>
-                <div className="bento-stat">
-                  <span className="bento-stat__value">100%</span>
-                  <span className="bento-stat__label">Satisfação Clientes</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Bento Box 4: Philosophy Statement */}
-            <div className="bento-card bento-card--quote glass-card">
-              <Star size={20} className="text-accent" />
-              <blockquote className="bento-quote">
-                "A simplicidade é o último grau de sofisticação em um software."
-              </blockquote>
-              <span className="bento-author">— Princípio de Engenharia</span>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
       {/* Interactive Tech Categories Grid with Real Brand Logos */}
       <section className="tech-section" id="tech-section">
         <div className="tech-section__container">
           <div className="section-header text-center">
             <span className="section-tag">
-              <Cpu size={14} /> Ecossistema
+              <Cpu size={14} /> Ecossistema & Habilidades
             </span>
             <h2 className="section-title">
-              Stack Tecnológica <span className="gradient-text">Com Logos Oficiais</span>
+              Minha Stack <span className="gradient-text">de Trabalho</span>
             </h2>
             <p className="section-subtitle">
-              Ferramentas de produção utilizadas para construir aplicações resilientes, velozes e escaláveis.
+              Tecnologias e ferramentas que utilizo no dia a dia para dar vida a projetos de alto nível.
             </p>
           </div>
 
@@ -462,7 +241,7 @@ export default function Home() {
           <div className="section-header section-header--flex">
             <div>
               <span className="section-tag">
-                <Layers size={14} /> Portfólio
+                <Layers size={14} /> Meus Trabalhos
               </span>
               <h2 className="section-title">
                 Projetos em <span className="gradient-text">Destaque</span>
@@ -482,7 +261,7 @@ export default function Home() {
                   <div className="featured-card__overlay">
                     <Link to="/projetos" className="featured-card__action-btn">
                       <ExternalLink size={18} />
-                      <span>Ver Detalhes</span>
+                      <span>Ver Detalhes do Projeto</span>
                     </Link>
                   </div>
                 </div>
@@ -509,22 +288,22 @@ export default function Home() {
         <div className="home-cta__container">
           <div className="home-cta__panel glass-panel">
             <span className="section-tag">
-              <Sparkles size={14} /> Parceria
+              <Sparkles size={14} /> Contato Pessoal
             </span>
             <h2 className="home-cta__title">
-              Pronto para construir o seu próximo <br />
-              <span className="gradient-text">produto digital?</span>
+              Quer tirar uma ideia do papel ou reforçar <br />
+              <span className="gradient-text">a sua equipe de desenvolvimento?</span>
             </h2>
             <p className="home-cta__text">
-              Disponível para novos projetos sob medida, desenvolvimento de software e consultoria técnica.
+              Estou disponível para projetos, desenvolvimento full-stack freelance ou oportunidades de longo prazo.
             </p>
             <div className="home-cta__buttons">
               <Link to="/contato" className="btn btn--primary" id="home-cta-final">
-                <span>Entrar em Contato</span>
+                <span>Iniciar Conversa</span>
                 <ArrowRight size={18} />
               </Link>
               <Link to="/sobre" className="btn btn--outline">
-                <span>Conhecer Trajetória</span>
+                <span>Ver Minha Trajetória</span>
               </Link>
             </div>
           </div>

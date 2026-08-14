@@ -93,6 +93,12 @@ export const Linkedin = ({ size = 20, ...props }: IconProps) => (
   </svg>
 )
 
+import { FaWhatsapp } from 'react-icons/fa6'
+
+export const WhatsApp = ({ size = 20, className = '', ...props }: IconProps) => (
+  <FaWhatsapp size={size} className={className} {...props} />
+)
+
 export const ArrowUp = ({ size = 20, ...props }: IconProps) => (
   <svg width={size} height={size} viewBox="0 0 24 24" {...defaultProps} {...props}>
     <path d="m5 12 7-7 7 7" />

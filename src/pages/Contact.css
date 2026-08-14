@@ -308,6 +308,49 @@
   line-height: 1.6;
 }
 
+/* FAQ Section */
+.contact-faq {
+  padding: 5rem 1.5rem;
+  position: relative;
+  z-index: 1;
+  background: rgba(248, 250, 252, 0.6);
+  border-top: 1px solid var(--border-color);
+}
+
+.contact-faq__container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-faq__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.faq-card {
+  padding: 1.75rem;
+  border-radius: var(--radius-lg);
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+}
+
+.faq-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.faq-card p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
 /* Responsive Contact */
 @media (max-width: 900px) {
   .contact-content__container {
