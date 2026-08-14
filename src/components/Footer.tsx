@@ -60,7 +60,7 @@ export default function Footer() {
             <h4 className="footer__col-title">Conectar</h4>
             <div className="footer__social-links">
               <a
-                href="https://github.com/brunoheyden"
+                href="https://github.com/Bruninnhoo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer__social-btn"
@@ -69,7 +69,7 @@ export default function Footer() {
                 <Github size={18} />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/bruno-heyden-13311a25a/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer__social-btn"

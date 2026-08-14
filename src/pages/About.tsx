@@ -6,7 +6,7 @@ const skillCategories = [
   {
     category: 'Front-end',
     icon: Code2,
-    skills: ['React / Next.js', 'TypeScript', 'HTML5 / CSS3', 'Tailwind CSS', 'Vue.js', 'State Management (Redux/Context API)'],
+    skills: ['React / Next.js', 'TypeScript', 'HTML5 / CSS3', 'Tailwind CSS'],
   },
   {
     category: 'Back-end',
@@ -16,12 +16,12 @@ const skillCategories = [
   {
     category: 'Banco de Dados',
     icon: Award,
-    skills: ['PostgreSQL', 'MongoDB', 'Redis', 'Firebase', 'ORMs (TypeORM/Drizzle)'],
+    skills: ['PostgreSQL', 'MongoDB', 'Redis'],
   },
   {
     category: 'DevOps & Outros',
     icon: Briefcase,
-    skills: ['Docker', 'Git & GitHub Workflows', 'CI/CD Pipelines', 'AWS / GCP', 'Vite / Webpack', 'Jest / Testing Library'],
+    skills: ['Docker', 'Git & GitHub Workflows', 'CI/CD Pipelines', 'AWS', 'Vite', 'Jest / Testing Library'],
   },
 ]
 
@@ -113,10 +113,6 @@ export default function About() {
             <div className="about-bio__image-frame glass-panel">
               <div className="about-bio__avatar-wrapper">
                 <img src="/bruno-avatar.jpg" alt="Bruno Heyden" className="about-bio__avatar-img" />
-                <div className="avatar-badge">
-                  <Sparkles size={16} />
-                  <span>Full-Stack Engineer</span>
-                </div>
               </div>
             </div>
           </div>
@@ -136,22 +132,6 @@ export default function About() {
               Gosto de dominar todo o ciclo de desenvolvimento — da arquitetura da API no backend até
               as micro-interações do front-end.
             </p>
-
-            {/* Action CV */}
-            <div className="about-bio__actions">
-              <button
-                onClick={handleDownloadCV}
-                className="btn btn--primary"
-                id="about-download-cv"
-              >
-                <Download size={18} />
-                <span>{downloadedCV ? 'Baixando CV...' : 'Baixar Currículo (CV)'}</span>
-              </button>
-
-              <a href="mailto:brunoheyden@gmail.com" className="btn btn--outline">
-                <span>Falar Diretamente</span>
-              </a>
-            </div>
           </div>
 
         </div>
