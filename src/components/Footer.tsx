@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom'
 import { Github, Linkedin, Mail, ArrowUp, Sparkles } from './Icons'
+import { useLanguage } from '../context/LanguageContext'
 import './Footer.css'
 
 export default function Footer() {
+  const { t } = useLanguage()
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -25,41 +28,42 @@ export default function Footer() {
               </span>
             </Link>
             <p className="footer__tagline">
-              Desenvolvedor de software especializado em criar soluções de alta performance e interfaces elegantes.
+              {t('Desenvolvedor de software especializado em criar soluções de alta performance e interfaces elegantes.', 'Software engineer specialized in building high-performance solutions and elegant interfaces.')}
             </p>
           </div>
 
           {/* Col 2: Navigation Links */}
           <div className="footer__links-col">
-            <h4 className="footer__col-title">Navegação</h4>
+            <h4 className="footer__col-title">{t('Navegação', 'Navigation')}</h4>
             <ul className="footer__link-list">
-              <li><Link to="/">Início</Link></li>
-              <li><Link to="/sobre">Sobre Mim</Link></li>
-              <li><Link to="/projetos">Projetos Selecionados</Link></li>
-              <li><Link to="/contato">Contato & Propostas</Link></li>
+              <li><Link to="/">{t('Início', 'Home')}</Link></li>
+              <li><Link to="/sobre">{t('Sobre Mim', 'About Me')}</Link></li>
+              <li><Link to="/projetos">{t('Projetos Selecionados', 'Selected Projects')}</Link></li>
+              <li><Link to="/contato">{t('Contato & Propostas', 'Contact & Inquiries')}</Link></li>
             </ul>
           </div>
 
           {/* Col 3: Tech Stack Highlights */}
           <div className="footer__tech-col">
-            <h4 className="footer__col-title">Especialidades</h4>
+            <h4 className="footer__col-title">{t('Especialidades', 'Specialties')}</h4>
             <div className="footer__tech-tags">
               <span>React 19</span>
               <span>Next.js</span>
               <span>TypeScript</span>
               <span>Node.js</span>
+              <span>Python</span>
+              <span>Django</span>
               <span>PostgreSQL</span>
               <span>Docker</span>
-              <span>Python</span>
             </div>
           </div>
 
           {/* Col 4: Social Links & Contact */}
           <div className="footer__social-col">
-            <h4 className="footer__col-title">Conectar</h4>
+            <h4 className="footer__col-title">{t('Conectar', 'Connect')}</h4>
             <div className="footer__social-links">
               <a
-                href="https://github.com/brunoheyden"
+                href="https://github.com/Bruninnhoo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer__social-btn"
@@ -68,7 +72,7 @@ export default function Footer() {
                 <Github size={18} />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/bruno-heyden-13311a25a/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer__social-btn"
@@ -86,7 +90,7 @@ export default function Footer() {
             </div>
             <Link to="/contato" className="footer__cta-link">
               <Sparkles size={14} />
-              <span>Falar com o Bruno</span>
+              <span>{t('Falar com o Bruno', 'Talk to Bruno')}</span>
             </Link>
           </div>
         </div>
@@ -94,15 +98,15 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="footer__bottom">
           <p className="footer__copyright">
-            © {new Date().getFullYear()} Bruno Heyden. Todos os direitos reservados.
+            © {new Date().getFullYear()} Bruno Heyden. {t('Todos os direitos reservados.', 'All rights reserved.')}
           </p>
           <button
             onClick={scrollToTop}
             className="footer__back-to-top"
-            aria-label="Voltar ao topo"
-            title="Voltar ao topo"
+            aria-label={t('Voltar ao topo', 'Back to top')}
+            title={t('Voltar ao topo', 'Back to top')}
           >
-            <span>Voltar ao topo</span>
+            <span>{t('Voltar ao topo', 'Back to top')}</span>
             <ArrowUp size={16} />
           </button>
         </div>

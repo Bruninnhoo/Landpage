@@ -170,6 +170,45 @@
   gap: 0.75rem;
 }
 
+/* Language Switcher Button */
+.lang-switcher-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  background: #f1f5f9;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: 0.35rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.lang-switcher-btn:hover {
+  background: #e2e8f0;
+  border-color: #cbd5e1;
+  color: var(--text-primary);
+}
+
+.lang-flag {
+  opacity: 0.45;
+  transition: all 0.2s ease;
+}
+
+.lang-flag--active {
+  opacity: 1;
+  color: var(--accent-primary);
+  font-weight: 700;
+}
+
+.lang-divider {
+  opacity: 0.3;
+  font-size: 0.7rem;
+}
+
 .navbar__cta-btn {
   padding: 0.55rem 1.15rem;
   font-size: 0.85rem;

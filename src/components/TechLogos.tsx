@@ -47,6 +47,14 @@ export const PythonLogo = ({ size = 24, ...props }: TechIconProps) => (
   </svg>
 )
 
+// Django Icon
+export const DjangoLogo = ({ size = 24, ...props }: TechIconProps) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <rect width="24" height="24" rx="4" fill="#092E20" />
+    <path d="M11 6h2v9.5c0 1.5-.7 2.5-2.2 2.5-.8 0-1.5-.3-1.9-.7l.6-1.3c.3.3.7.5 1.1.5.7 0 1-.4 1-1.3V6zm-4.5 4.7c.6 0 1 .2 1.3.5V6H6.2V4.5h3.3v11.7H8V15c-.4.5-1 .8-1.7.8-1.5 0-2.6-1.2-2.6-2.6 0-1.5 1.2-2.5 2.8-2.5zm.3 3.8c.8 0 1.3-.6 1.3-1.3s-.5-1.3-1.3-1.3-1.3.6-1.3 1.3.5 1.3 1.3 1.3z" fill="#44B78B" />
+  </svg>
+)
+
 // PostgreSQL Icon
 export const PostgresLogo = ({ size = 24, ...props }: TechIconProps) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>

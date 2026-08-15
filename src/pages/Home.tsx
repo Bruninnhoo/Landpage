@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   ArrowRight,
@@ -19,22 +19,23 @@ import {
   TypescriptLogo,
   NodejsLogo,
   PythonLogo,
+  DjangoLogo,
   PostgresLogo,
   DockerLogo,
   TailwindLogo,
-  SupabaseLogo,
   RedisLogo,
   AWSLogo,
   MongoLogo,
-  GraphQLLogo,
   ViteLogo,
   GitLogo
 } from '../components/TechLogos'
+import { useLanguage } from '../context/LanguageContext'
 import './Home.css'
 
 const techCategories = [
   {
-    name: 'Front-end & UI',
+    namePt: 'Front-end & UI',
+    nameEn: 'Front-end & UI',
     icon: Globe,
     items: [
       { name: 'React 19', logo: ReactLogo },
@@ -45,27 +46,29 @@ const techCategories = [
     ]
   },
   {
-    name: 'Back-end & APIs',
+    namePt: 'Back-end & APIs',
+    nameEn: 'Back-end & APIs',
     icon: Server,
     items: [
       { name: 'Node.js', logo: NodejsLogo },
       { name: 'Python', logo: PythonLogo },
-      { name: 'GraphQL', logo: GraphQLLogo },
+      { name: 'Django', logo: DjangoLogo },
       { name: 'Express', logo: NodejsLogo },
     ]
   },
   {
-    name: 'Banco de Dados',
+    namePt: 'Banco de Dados',
+    nameEn: 'Databases',
     icon: Database,
     items: [
       { name: 'PostgreSQL', logo: PostgresLogo },
       { name: 'MongoDB', logo: MongoLogo },
       { name: 'Redis', logo: RedisLogo },
-      { name: 'Supabase', logo: SupabaseLogo },
     ]
   },
   {
-    name: 'DevOps & Outros',
+    namePt: 'DevOps & Outros',
+    nameEn: 'DevOps & Tools',
     icon: Cpu,
     items: [
       { name: 'Docker', logo: DockerLogo },
@@ -78,35 +81,18 @@ const techCategories = [
 const featuredProjects = [
   {
     id: 1,
-    title: 'Dashboard Analytics Pro',
-    category: 'Full-stack & AI',
-    description: 'Plataforma de inteligência de dados em tempo real com gráficos dinâmicos, relatórios instantâneos e métricas preditivas.',
-    tags: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    id: 2,
-    title: 'SaaS E-Commerce Ecosystem',
-    category: 'Full-stack & Mobile',
-    description: 'Ecossistema completo de vendas online com suporte a pagamentos globais Stripe, checkout ultrarrápido e gestão de catálogo.',
-    tags: ['Next.js', 'Stripe', 'Tailwind', 'Redis'],
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+    title: 'Cadena Locações - Plataforma Web',
+    category: 'Full-stack & Cloud',
+    descPt: 'Modernização completa da plataforma web para a Cadena Locações, com novas funcionalidades de negócios, UI/UX intuitiva e otimização de orçamentos.',
+    descEn: 'Complete web platform modernization for Cadena Locações, delivering new business features, intuitive UI/UX, and quote request optimizations.',
+    tags: ['Java', 'Spring Boot', 'AWS', 'React', 'TypeScript'],
+    image: './Cadena.png',
   },
 ]
 
 export default function Home() {
   const [copied, setCopied] = useState(false)
-  const [currentTime, setCurrentTime] = useState('')
-
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date()
-      setCurrentTime(now.toLocaleTimeString('pt-BR', { timeZone: 'America/Sao_Paulo', hour: '2-digit', minute: '2-digit' }))
-    }
-    updateTime()
-    const timer = setInterval(updateTime, 10000)
-    return () => clearInterval(timer)
-  }, [])
+  const { lang, t } = useLanguage()
 
   const copyEmail = () => {
     navigator.clipboard.writeText('brunoheyden@gmail.com')
@@ -127,39 +113,38 @@ export default function Home() {
             <div className="hero__author-greeting animate-fade-in-up delay-1">
               <div className="hero__author-text">
                 <span className="hero__author-name">Bruno Heyden</span>
-                <span className="hero__greeting-tag">Desenvolvedor Full-Stack & UI Specialist</span>
+                <span className="hero__greeting-tag">{t('Desenvolvedor Full-Stack & UI Specialist', 'Full-Stack Developer & UI Specialist')}</span>
               </div>
             </div>
 
             <h1 className="hero__title animate-fade-in-up delay-2">
-              Transformando conceitos em<br />
-              <span className="gradient-text">produtos digitais</span>.
+              {t('Transformando conceitos em', 'Transforming concepts into')}<br />
+              <span className="gradient-text">{t('produtos digitais', 'digital products')}</span>.
             </h1>
 
             <p className="hero__description animate-fade-in-up delay-3">
-              Olá, sou <strong>Bruno Heyden</strong>, um desenvolvedor que ama criar produtos digitais. Combino engenharia de software rigorosa com sensibilidade de design para criar
-              aplicações web velozes, escaláveis e intuitivas. Focado em ecossistemas
-              <strong> React, Next.js, Node.js e TypeScript</strong>.
+              {t('Olá, sou ', 'Hi, I\'m ')}<strong>Bruno Heyden</strong>{t(', um desenvolvedor que ama criar produtos digitais. Combino engenharia de software rigorosa com sensibilidade de design para criar aplicações web velozes, escaláveis e intuitivas. Focado em ecossistemas ', ', a software engineer who loves building digital products. I combine clean software engineering with design sensibility to craft fast, scalable, and intuitive web applications focused on ')}
+              <strong> React, Next.js, Node.js, Python, Java {t('e', 'and')} TypeScript</strong>.
             </p>
             {/* Actions & Quick Contact */}
             <div className="hero__actions animate-fade-in-up delay-4">
               <Link to="/projetos" className="btn btn--primary" id="hero-cta-projects">
-                <span>Ver Portfólio</span>
+                <span>{t('Ver Portfólio', 'View Portfolio')}</span>
                 <ArrowRight size={18} />
               </Link>
 
               <Link to="/contato" className="btn btn--outline" id="hero-cta-contact">
-                <span>Falar Comigo</span>
+                <span>{t('Falar Comigo', 'Get in Touch')}</span>
               </Link>
 
               <button
                 onClick={copyEmail}
                 className="hero__copy-btn"
-                title="Copiar e-mail"
+                title={t('Copiar e-mail', 'Copy email')}
                 id="hero-copy-email"
               >
                 {copied ? <Check size={16} className="text-emerald" /> : <Copy size={16} />}
-                <span>{copied ? 'E-mail copiado!' : 'brunoheyden@gmail.com'}</span>
+                <span>{copied ? t('E-mail copiado!', 'Email copied!') : 'brunoheyden@gmail.com'}</span>
               </button>
             </div>
           </div>
@@ -177,11 +162,6 @@ export default function Home() {
                 <Sparkles size={16} className="text-accent" />
                 <span>Full-Stack Developer</span>
               </div>
-
-              <div className="floating-badge floating-badge--bottom-left">
-                <span className="hero__status-pulse" />
-                <span>São Paulo, BR • {currentTime || 'Disponível'}</span>
-              </div>
             </div>
           </div>
 
@@ -196,26 +176,27 @@ export default function Home() {
         <div className="tech-section__container">
           <div className="section-header text-center">
             <span className="section-tag">
-              <Cpu size={14} /> Ecossistema & Habilidades
+              <Cpu size={14} /> {t('Ecossistema & Habilidades', 'Ecosystem & Skills')}
             </span>
             <h2 className="section-title">
-              Minha Stack <span className="gradient-text">de Trabalho</span>
+              {t('Minha Stack', 'My Tech')} <span className="gradient-text">{t('de Trabalho', 'Stack')}</span>
             </h2>
             <p className="section-subtitle">
-              Tecnologias e ferramentas que utilizo no dia a dia para dar vida a projetos de alto nível.
+              {t('Tecnologias e ferramentas que utilizo no dia a dia para dar vida a projetos de alto nível.', 'Technologies and tools I use daily to build high-quality digital products.')}
             </p>
           </div>
 
           <div className="tech-categories-grid">
             {techCategories.map((cat, i) => {
               const CatIcon = cat.icon
+              const catName = lang === 'en' ? cat.nameEn : cat.namePt
               return (
-                <div key={cat.name} className={`tech-category-card glass-card animate-fade-in-up delay-${i + 1}`}>
+                <div key={catName} className={`tech-category-card glass-card animate-fade-in-up delay-${i + 1}`}>
                   <div className="tech-category-card__header">
                     <div className="tech-category-card__icon">
                       <CatIcon size={20} />
                     </div>
-                    <h3>{cat.name}</h3>
+                    <h3>{catName}</h3>
                   </div>
                   <div className="tech-category-card__tags">
                     {cat.items.map((tech) => {
@@ -241,14 +222,14 @@ export default function Home() {
           <div className="section-header section-header--flex">
             <div>
               <span className="section-tag">
-                <Layers size={14} /> Meus Trabalhos
+                <Layers size={14} /> {t('Meus Trabalhos', 'My Projects')}
               </span>
               <h2 className="section-title">
-                Projetos em <span className="gradient-text">Destaque</span>
+                {t('Projetos em', 'Featured')} <span className="gradient-text">{t('Destaque', 'Projects')}</span>
               </h2>
             </div>
             <Link to="/projetos" className="btn btn--outline">
-              <span>Ver Todos os Projetos</span>
+              <span>{t('Ver Todos os Projetos', 'View All Projects')}</span>
               <ArrowRight size={16} />
             </Link>
           </div>
@@ -261,14 +242,14 @@ export default function Home() {
                   <div className="featured-card__overlay">
                     <Link to="/projetos" className="featured-card__action-btn">
                       <ExternalLink size={18} />
-                      <span>Ver Detalhes do Projeto</span>
+                      <span>{t('Ver Detalhes do Projeto', 'View Project Details')}</span>
                     </Link>
                   </div>
                 </div>
                 <div className="featured-card__content">
                   <span className="featured-card__category">{project.category}</span>
                   <h3 className="featured-card__title">{project.title}</h3>
-                  <p className="featured-card__description">{project.description}</p>
+                  <p className="featured-card__description">{lang === 'en' ? project.descEn : project.descPt}</p>
                   <div className="featured-card__tags">
                     {project.tags.map((tag) => (
                       <span key={tag} className="tech-pill tech-pill--sm">
@@ -288,22 +269,22 @@ export default function Home() {
         <div className="home-cta__container">
           <div className="home-cta__panel glass-panel">
             <span className="section-tag">
-              <Sparkles size={14} /> Contato Pessoal
+              <Sparkles size={14} /> {t('Contato Pessoal', 'Get in Touch')}
             </span>
             <h2 className="home-cta__title">
-              Quer tirar uma ideia do papel ou reforçar <br />
-              <span className="gradient-text">a sua equipe de desenvolvimento?</span>
+              {t('Quer tirar uma ideia do papel ou reforçar', 'Looking to turn an idea into reality or strengthen')} <br />
+              <span className="gradient-text">{t('a sua equipe de desenvolvimento?', 'your engineering team?')}</span>
             </h2>
             <p className="home-cta__text">
-              Estou disponível para projetos, desenvolvimento full-stack freelance ou oportunidades de longo prazo.
+              {t('Estou disponível para projetos, desenvolvimento full-stack freelance ou oportunidades de longo prazo.', 'Available for custom projects, full-stack freelance contracts, or long-term opportunities.')}
             </p>
             <div className="home-cta__buttons">
               <Link to="/contato" className="btn btn--primary" id="home-cta-final">
-                <span>Iniciar Conversa</span>
+                <span>{t('Iniciar Conversa', 'Start a Conversation')}</span>
                 <ArrowRight size={18} />
               </Link>
               <Link to="/sobre" className="btn btn--outline">
-                <span>Ver Minha Trajetória</span>
+                <span>{t('Ver Minha Trajetória', 'View My Career Path')}</span>
               </Link>
             </div>
           </div>
