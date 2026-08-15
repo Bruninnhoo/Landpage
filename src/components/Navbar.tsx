@@ -1,19 +1,21 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Home, User, FolderGit2, Mail, Sparkles, Menu, X } from './Icons'
+import { useLanguage } from '../context/LanguageContext'
 import './Navbar.css'
 
 const navLinks = [
-  { path: '/', label: 'Início', icon: Home },
-  { path: '/sobre', label: 'Sobre', icon: User },
-  { path: '/projetos', label: 'Projetos', icon: FolderGit2 },
-  { path: '/contato', label: 'Contato', icon: Mail },
+  { path: '/', labelPt: 'Início', labelEn: 'Home', icon: Home },
+  { path: '/sobre', labelPt: 'Sobre', labelEn: 'About', icon: User },
+  { path: '/projetos', labelPt: 'Projetos', labelEn: 'Projects', icon: FolderGit2 },
+  { path: '/contato', labelPt: 'Contato', labelEn: 'Contact', icon: Mail },
 ]
 
 export default function Navbar() {
   const location = useLocation()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const { lang, toggleLang, t } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -41,15 +43,16 @@ export default function Navbar() {
             {navLinks.map((link) => {
               const Icon = link.icon
               const isActive = location.pathname === link.path
+              const label = lang === 'en' ? link.labelEn : link.labelPt
               return (
                 <li key={link.path}>
                   <Link
                     to={link.path}
                     className={`navbar__link ${isActive ? 'navbar__link--active' : ''}`}
-                    id={`nav-link-${link.label.toLowerCase()}`}
+                    id={`nav-link-${link.labelPt.toLowerCase()}`}
                   >
                     <Icon size={16} className="navbar__link-icon" />
-                    <span>{link.label}</span>
+                    <span>{label}</span>
                     {isActive && <span className="navbar__link-indicator" />}
                   </Link>
                 </li>
@@ -57,11 +60,22 @@ export default function Navbar() {
             })}
           </ul>
 
-          {/* Action CTA Badge & Mobile Toggle */}
+          {/* Language Switcher & Action CTA */}
           <div className="navbar__actions">
+            <button
+              onClick={toggleLang}
+              className="lang-switcher-btn"
+              title={lang === 'pt' ? 'Mudar para Inglês' : 'Switch to Portuguese'}
+              id="lang-toggle-btn"
+            >
+              <span className={`lang-flag ${lang === 'pt' ? 'lang-flag--active' : ''}`}>PT</span>
+              <span className="lang-divider">/</span>
+              <span className={`lang-flag ${lang === 'en' ? 'lang-flag--active' : ''}`}>EN</span>
+            </button>
+
             <Link to="/contato" className="navbar__cta-btn btn btn--primary">
               <Sparkles size={14} />
-              <span>Contratar</span>
+              <span>{t('Contratar', 'Hire Me')}</span>
             </Link>
 
             <button
