@@ -5,7 +5,7 @@ import Footer from './components/Footer'
 import BackgroundLines from './components/BackgroundLines'
 import Home from './pages/Home'
 import About from './pages/About'
-import Projects from './pages/Projects'
+import Curriculum from './pages/Curriculum'
 import Contact from './pages/Contact'
 import { LanguageProvider } from './context/LanguageContext'
 import './App.css'
@@ -29,7 +29,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/sobre" element={<About />} />
-            <Route path="/projetos" element={<Projects />} />
+            <Route path="/curriculum" element={<Curriculum />} />
             <Route path="/contato" element={<Contact />} />
           </Routes>
         </main>

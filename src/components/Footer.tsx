@@ -38,7 +38,8 @@ export default function Footer() {
             <ul className="footer__link-list">
               <li><Link to="/">{t('Início', 'Home')}</Link></li>
               <li><Link to="/sobre">{t('Sobre Mim', 'About Me')}</Link></li>
-              <li><Link to="/projetos">{t('Projetos Selecionados', 'Selected Projects')}</Link></li>
+              <li><Link to="/curriculum">{t('Currículo', 'Resume')}</Link></li>
+              <li><a href="https://github.com/Bruninnhoo" target="_blank" rel="noopener noreferrer">{t('GitHub & Projetos', 'GitHub & Projects')}</a></li>
               <li><Link to="/contato">{t('Contato & Propostas', 'Contact & Inquiries')}</Link></li>
             </ul>
           </div>
@@ -89,7 +90,6 @@ export default function Footer() {
               </a>
             </div>
             <Link to="/contato" className="footer__cta-link">
-              <Sparkles size={14} />
               <span>{t('Falar com o Bruno', 'Talk to Bruno')}</span>
             </Link>
           </div>
