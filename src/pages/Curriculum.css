@@ -1,0 +1,252 @@
+/* ========================================
+   CURRICULUM PAGE
+   ======================================== */
+
+.curriculum {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 5rem;
+}
+
+/* Ambient Lights */
+.curriculum__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.curriculum__glow--cyan {
+  top: 10%;
+  left: 15%;
+  width: 350px;
+  height: 350px;
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.curriculum__glow--violet {
+  top: 40%;
+  right: 15%;
+  width: 400px;
+  height: 400px;
+  background: rgba(168, 85, 247, 0.08);
+}
+
+/* Header */
+.curriculum-header {
+  padding: 4rem 1.5rem 3rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.curriculum-header__container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.curriculum-header__title {
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.curriculum-header__text {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  max-width: 650px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+}
+
+.curriculum-header__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Timeline Section (First section) */
+.curriculum-timeline {
+  padding: 3rem 1.5rem 5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.curriculum-timeline__container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.timeline__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.timeline__item {
+  padding: 2rem;
+  background: #ffffff;
+  border-left: 3px solid var(--accent-primary);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline__item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.timeline__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.timeline__year {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  padding: 0.25rem 0.75rem;
+  background: var(--accent-light);
+  border-radius: var(--radius-full);
+  border: 1px solid #bfdbfe;
+}
+
+.timeline__company {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.timeline__job-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.timeline__desc {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.timeline__highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.timeline__highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+/* Skills Section (Second section) */
+.curriculum-skills {
+  padding: 4rem 1.5rem 6rem;
+  position: relative;
+  z-index: 1;
+  background: rgba(248, 250, 252, 0.6);
+  border-top: 1px solid var(--border-color);
+}
+
+.curriculum-skills__container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.skills__category {
+  padding: 1.75rem;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.skills__category:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.skills__category-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.skills__category-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  background: var(--accent-light);
+  border: 1px solid #bfdbfe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-primary);
+}
+
+.skills__category-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.skills__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.skills__item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.skills__bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .curriculum-header__title {
+    font-size: 2.4rem;
+  }
+
+  .skills__grid {
+    grid-template-columns: 1fr;
+  }
+}

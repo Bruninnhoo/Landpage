@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Home, User, FolderGit2, Mail, Sparkles, Menu, X } from './Icons'
+import { Home, User, FileText, Mail, Menu, X } from './Icons'
 import { useLanguage } from '../context/LanguageContext'
 import './Navbar.css'
 
 const navLinks = [
   { path: '/', labelPt: 'Início', labelEn: 'Home', icon: Home },
   { path: '/sobre', labelPt: 'Sobre', labelEn: 'About', icon: User },
-  { path: '/projetos', labelPt: 'Projetos', labelEn: 'Projects', icon: FolderGit2 },
+  { path: '/curriculum', labelPt: 'Currículo', labelEn: 'Resume', icon: FileText },
   { path: '/contato', labelPt: 'Contato', labelEn: 'Contact', icon: Mail },
 ]
 
@@ -15,7 +15,7 @@ export default function Navbar() {
   const location = useLocation()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const { lang, toggleLang, t } = useLanguage()
+  const { lang, toggleLang } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -72,11 +72,6 @@ export default function Navbar() {
               <span className="lang-divider">/</span>
               <span className={`lang-flag ${lang === 'en' ? 'lang-flag--active' : ''}`}>EN</span>
             </button>
-
-            <Link to="/contato" className="navbar__cta-btn btn btn--primary">
-              <Sparkles size={14} />
-              <span>{t('Contratar', 'Hire Me')}</span>
-            </Link>
 
             <button
               className={`navbar__toggle ${mobileOpen ? 'navbar__toggle--open' : ''}`}

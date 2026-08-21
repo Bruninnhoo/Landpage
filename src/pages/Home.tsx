@@ -11,6 +11,7 @@ import {
   Server,
   Globe,
   ExternalLink,
+  Github,
 } from '../components/Icons'
 import TechMarquee from '../components/TechMarquee'
 import {
@@ -87,6 +88,7 @@ const featuredProjects = [
     descEn: 'Complete web platform modernization for Cadena Locações, delivering new business features, intuitive UI/UX, and quote request optimizations.',
     tags: ['Java', 'Spring Boot', 'AWS', 'React', 'TypeScript'],
     image: './Cadena.png',
+    link: 'https://cadenalocacoes.com.br/',
   },
 ]
 
@@ -128,10 +130,17 @@ export default function Home() {
             </p>
             {/* Actions & Quick Contact */}
             <div className="hero__actions animate-fade-in-up delay-4">
-              <Link to="/projetos" className="btn btn--primary" id="hero-cta-projects">
-                <span>{t('Ver Portfólio', 'View Portfolio')}</span>
+              <a
+                href="https://github.com/Bruninnhoo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn--primary"
+                id="hero-cta-projects"
+              >
+                <Github size={18} />
+                <span>{t('Meu GitHub', 'My GitHub')}</span>
                 <ArrowRight size={18} />
-              </Link>
+              </a>
 
               <Link to="/contato" className="btn btn--outline" id="hero-cta-contact">
                 <span>{t('Falar Comigo', 'Get in Touch')}</span>
@@ -228,10 +237,16 @@ export default function Home() {
                 {t('Projetos em', 'Featured')} <span className="gradient-text">{t('Destaque', 'Projects')}</span>
               </h2>
             </div>
-            <Link to="/projetos" className="btn btn--outline">
-              <span>{t('Ver Todos os Projetos', 'View All Projects')}</span>
+            <a
+              href="https://github.com/Bruninnhoo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn--outline"
+            >
+              <Github size={16} />
+              <span>{t('Ver Todos os Projetos no GitHub', 'View All Projects on GitHub')}</span>
               <ArrowRight size={16} />
-            </Link>
+            </a>
           </div>
 
           <div className="featured-grid">
@@ -240,10 +255,15 @@ export default function Home() {
                 <div className="featured-card__image-container">
                   <img src={project.image} alt={project.title} className="featured-card__image" />
                   <div className="featured-card__overlay">
-                    <Link to="/projetos" className="featured-card__action-btn">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="featured-card__action-btn"
+                    >
                       <ExternalLink size={18} />
-                      <span>{t('Ver Detalhes do Projeto', 'View Project Details')}</span>
-                    </Link>
+                      <span>{t('Acessar Projeto', 'Visit Project')}</span>
+                    </a>
                   </div>
                 </div>
                 <div className="featured-card__content">
@@ -263,34 +283,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="home-cta" id="home-cta-section">
-        <div className="home-cta__container">
-          <div className="home-cta__panel glass-panel">
-            <span className="section-tag">
-              <Sparkles size={14} /> {t('Contato Pessoal', 'Get in Touch')}
-            </span>
-            <h2 className="home-cta__title">
-              {t('Quer tirar uma ideia do papel ou reforçar', 'Looking to turn an idea into reality or strengthen')} <br />
-              <span className="gradient-text">{t('a sua equipe de desenvolvimento?', 'your engineering team?')}</span>
-            </h2>
-            <p className="home-cta__text">
-              {t('Estou disponível para projetos, desenvolvimento full-stack freelance ou oportunidades de longo prazo.', 'Available for custom projects, full-stack freelance contracts, or long-term opportunities.')}
-            </p>
-            <div className="home-cta__buttons">
-              <Link to="/contato" className="btn btn--primary" id="home-cta-final">
-                <span>{t('Iniciar Conversa', 'Start a Conversation')}</span>
-                <ArrowRight size={18} />
-              </Link>
-              <Link to="/sobre" className="btn btn--outline">
-                <span>{t('Ver Minha Trajetória', 'View My Career Path')}</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
     </div>
   )
 }
