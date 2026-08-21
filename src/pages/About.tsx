@@ -1,4 +1,4 @@
-import { User, GraduationCap, CheckCircle2, Sparkles } from '../components/Icons'
+import { User, GraduationCap, CheckCircle2, Sparkles, Gamepad2, Headphones, Monitor, Music } from '../components/Icons'
 import { useLanguage } from '../context/LanguageContext'
 import './About.css'
 
@@ -31,28 +31,32 @@ const coreValues = [
 
 const personalInterests = [
   {
-    icon: '🎮',
+    icon: Gamepad2,
+    accentClass: 'interest-icon--cyan',
     titlePt: 'Videogames & Jogos',
     titleEn: 'Gaming & Video Games',
-    descPt: 'Eu amo jogar videogames nas minhas horas vagas! Gosto muito de explorar diferentes gêneros, RPGs e narrativas interativas. É onde recarrego minhas energias criativas.',
-    descEn: 'I love playing video games in my free time! I really enjoy exploring different genres, RPGs, and interactive storytelling where I recharge my creative energy.',
+    descPt: 'Eu amo jogar videogames nas minhas horas vagas! Sou apaixonado pelo gênero soulslike por conta do alto nível de desafio e superação que proporcionam, além de explorar RPGs e narrativas interativas. É onde recarrego minhas energias criativas.',
+    descEn: 'I love playing video games in my free time! I am a huge fan of soulslike games for the intense challenge and sense of accomplishment they provide, as well as exploring RPGs and interactive stories to recharge my creative energy.',
   },
   {
-    icon: '🎧',
+    icon: Headphones,
+    accentClass: 'interest-icon--violet',
     titlePt: 'Meu Gênero de Música Favorito',
     titleEn: 'My Favorite Music Genre',
     descPt: 'Meu gênero de música favorito é bastante eclético — curto demais rock, lofi e eletrônica. Programar ouvindo uma boa trilha sonora é essencial para o meu estado de flow.',
     descEn: 'My favorite music genre is quite eclectic — I really enjoy rock, lofi, and electronic tracks. Coding with a great soundtrack is key to keeping me in flow.',
   },
   {
-    icon: '🖥️',
+    icon: Monitor,
+    accentClass: 'interest-icon--amber',
     titlePt: 'Meu PC & Setup',
     titleEn: 'My PC & Workstation Setup',
     descPt: 'Tenho grande paixão por cuidar, montar e otimizar o meu próprio PC e estação de trabalho. Adoro ajustar atalhos de teclado, scripts no terminal e deixar a estética do meu ambiente perfeita.',
     descEn: 'I have a huge passion for building and optimizing my PC setup and workstation. I love tuning keyboard shortcuts, CLI scripts, and creating a pristine workspace.',
   },
   {
-    icon: '🎸',
+    icon: Music,
+    accentClass: 'interest-icon--emerald',
     titlePt: 'Tocar Instrumentos',
     titleEn: 'Playing Instruments',
     descPt: 'Eu toco instrumentos musicais (como violão e guitarra). É a minha forma favorita de expressão artística fora do mundo da programação, exercitando foco e sensibilidade.',
@@ -172,11 +176,14 @@ export default function About() {
 
           <div className="personal-interests-grid">
             {personalInterests.map((interest, i) => {
+              const IconComponent = interest.icon
               const title = lang === 'en' ? interest.titleEn : interest.titlePt
               const desc = lang === 'en' ? interest.descEn : interest.descPt
               return (
                 <div key={interest.titlePt} className={`personal-interest-card glass-card animate-fade-in-up delay-${i + 1}`}>
-                  <div className="personal-interest-icon">{interest.icon}</div>
+                  <div className={`personal-interest-icon ${interest.accentClass}`}>
+                    <IconComponent size={22} />
+                  </div>
                   <h3>{title}</h3>
                   <p>{desc}</p>
                 </div>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Github, Linkedin, Mail, ArrowUp, Sparkles } from './Icons'
+import { Github, Linkedin, Mail, ArrowUp } from './Icons'
 import { useLanguage } from '../context/LanguageContext'
 import './Footer.css'
 
