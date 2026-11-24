@@ -24,7 +24,7 @@ export default function Footer() {
                 <img src="/bruno-avatar.jpg" alt="Bruno Heyden" className="navbar__logo-img" />
               </div>
               <span className="footer__logo-text">
-                bruno<span className="footer__logo-dot">.dev</span>
+                BRUNO<span className="footer__logo-dot">.H</span>
               </span>
             </Link>
             <p className="footer__tagline">
@@ -48,6 +48,9 @@ export default function Footer() {
           <div className="footer__tech-col">
             <h4 className="footer__col-title">{t('Especialidades', 'Specialties')}</h4>
             <div className="footer__tech-tags">
+              <span>Java</span>
+              <span>Spring Boot</span>
+              <span>AWS</span>
               <span>React 19</span>
               <span>Next.js</span>
               <span>TypeScript</span>

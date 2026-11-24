@@ -1,0 +1,60 @@
+/* Ruler scroll indicator. Touch and small screens keep the native scrollbar. */
+.scroll-ruler {
+  display: none;
+}
+
+@media (hover: hover) and (min-width: 801px) {
+  html {
+    scrollbar-width: none;
+  }
+
+  html::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    padding-right: 44px;
+  }
+
+  .navbar-wrapper {
+    right: 44px;
+  }
+
+  .scroll-ruler {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 44px;
+    z-index: 1001;
+    cursor: ns-resize;
+    touch-action: none;
+    border-left: 1px solid var(--border-color);
+    background:
+      linear-gradient(var(--text-muted) 1px, transparent 1px) right top / 16px 80px repeat-y,
+      linear-gradient(var(--border-hover) 1px, transparent 1px) right top / 8px 16px repeat-y,
+      var(--bg-primary);
+  }
+
+  .scroll-ruler i {
+    position: absolute;
+    left: 6px;
+    right: 0;
+    top: calc(14px + var(--p, 0) * (100% - 28px));
+    height: 2px;
+    background: var(--accent-primary);
+    box-shadow: 0 0 12px var(--accent-primary);
+    pointer-events: none;
+  }
+
+  .scroll-ruler i::after {
+    content: attr(data-p);
+    position: absolute;
+    right: 2px;
+    top: 5px;
+    font: 500 0.62rem var(--font-mono);
+    letter-spacing: 0.04em;
+    color: var(--ruler-label, var(--accent-primary));
+  }
+}

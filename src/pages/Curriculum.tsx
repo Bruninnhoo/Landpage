@@ -1,4 +1,5 @@
-import { Briefcase, Award, GraduationCap, CheckCircle2, Code2, Terminal, Cpu, ArrowRight } from '../components/Icons'
+import PageHero from '../components/PageHero'
+import { CheckCircle2, Code2, Terminal, Database, Server, ArrowRight } from '../components/Icons'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 import './Curriculum.css'
@@ -7,19 +8,19 @@ const timeline = [
   {
     yearPt: '2026 - Presente',
     yearEn: '2026 - Present',
-    titlePt: 'Desenvolvedor Front-end',
-    titleEn: 'Front-end Developer',
+    titlePt: 'Desenvolvedor Full-stack',
+    titleEn: 'Full-stack Developer',
     companyPt: 'Residere Imóveis (Freelancer)',
     companyEn: 'Residere Imóveis (Freelance)',
-    descPt: 'Atuo no desenvolvimento e na otimização de interfaces web modernas para o setor imobiliário, com foco total em entregar a melhor experiência do usuário e aumentar taxas de conversão.',
-    descEn: 'I work on developing and optimizing modern web interfaces for the real estate sector, focusing on delivering outstanding UX and driving conversion rates.',
+    descPt: 'Atuo como desenvolvedor full-stack no sistema web da imobiliária, com Java e Spring Boot no back-end, React no front-end e infraestrutura na AWS.',
+    descEn: "I work as a full-stack developer on the real-estate agency's web system, with Java and Spring Boot on the back-end, React on the front-end and infrastructure on AWS.",
     hlPt: [
-      'Desenvolvo componentes reusáveis e altamente responsivos em React e TypeScript',
-      'Otimizo estratégias de SEO técnico e velocidade de carregamento das aplicações'
+      'Desenvolvo o back-end em Java com Spring Boot e o front-end em React',
+      'Cuido do CI/CD, da infraestrutura na AWS e do kanban do projeto'
     ],
     hlEn: [
-      'I build reusable, highly responsive React & TypeScript components',
-      'I optimize technical SEO and web performance for maximum speed'
+      'I build the back-end in Java with Spring Boot and the front-end in React',
+      'I handle CI/CD, the AWS infrastructure and the project kanban'
     ],
   },
   {
@@ -76,13 +77,13 @@ const skillCategories = [
   {
     categoryPt: 'Banco de Dados',
     categoryEn: 'Databases',
-    icon: Award,
+    icon: Database,
     skills: ['PostgreSQL', 'MongoDB', 'Redis'],
   },
   {
     categoryPt: 'DevOps & Ferramentas',
     categoryEn: 'DevOps & Tools',
-    icon: Briefcase,
+    icon: Server,
     skills: ['Docker', 'Git & GitHub Workflows', 'CI/CD Pipelines', 'AWS (EC2, S3)', 'Jest / Testing Library', 'Linux / Bash'],
   },
 ]
@@ -91,127 +92,67 @@ export default function Curriculum() {
   const { lang, t } = useLanguage()
 
   return (
-    <div className="curriculum" id="curriculum-page">
-
-      {/* Background Ambient Lights */}
-      <div className="curriculum__glow curriculum__glow--cyan" />
-      <div className="curriculum__glow curriculum__glow--violet" />
-
-      {/* Page Header */}
-      <section className="curriculum-header" id="curriculum-header">
-        <div className="curriculum-header__container">
-          <span className="section-tag animate-fade-in-up">
-            <GraduationCap size={14} /> {t('Currículo Profissional', 'Professional Resume')}
-          </span>
-          <h1 className="curriculum-header__title animate-fade-in-up delay-1">
-            {t('Minha Trajetória &', 'My Path &')}<br />
-            <span className="gradient-amber-text">{t('Competências Profissionais', 'Professional Skills')}</span>.
-          </h1>
-          <p className="curriculum-header__text animate-fade-in-up delay-2">
-            {t(
+    <div className="home" id="curriculum-page">
+      <div className="hm-wrap">
+        <PageHero
+          lead={t('Currículo', 'Resume')}
+          title={t('Trajetória', 'My path')}
+          text={t(
               'Apresento aqui o meu percurso profissional, os projetos reais em que atuei e as competências técnicas que aprimorei ao longo do meu aprendizado contínuo.',
               'Here I present my professional path, real-world projects I have worked on, and the technical skills I have honed throughout my continuous learning journey.'
             )}
-          </p>
-          <div className="curriculum-header__actions animate-fade-in-up delay-3">
-            <Link to="/contato" className="btn btn--primary">
-              <span>{t('Entrar em Contato', 'Get in Touch')}</span>
+        >
+          <div className="pg-actions">
+            <Link to="/contato" className="hm-btn">
+              {t('Entrar em contato', 'Get in touch')}
               <ArrowRight size={16} />
             </Link>
-            <a href="https://github.com/Bruninnhoo" target="_blank" rel="noopener noreferrer" className="btn btn--outline">
-              <span>{t('Meu GitHub', 'My GitHub')}</span>
+            <a href="https://github.com/Bruninnhoo" target="_blank" rel="noopener noreferrer" className="hm-btn hm-btn--line">
+              {t('Meu GitHub', 'My GitHub')}
             </a>
           </div>
-        </div>
-      </section>
+        </PageHero>
 
-      {/* SECTION 1: Trajetória Profissional (MUST BE FIRST) */}
-      <section className="curriculum-timeline" id="curriculum-timeline">
-        <div className="curriculum-timeline__container">
-          <div className="section-header text-center">
-            <span className="section-tag">
-              <Briefcase size={14} /> {t('Experiência Prática', 'Practical Experience')}
-            </span>
-            <h2 className="section-title">
-              {t('Minha Trajetória', 'My Professional')} <span className="gradient-amber-text">{t('Profissional', 'Journey')}</span>
-            </h2>
-            <p className="section-subtitle">
-              {t('Empresas, projetos freelancers e soluções reais que desenvolvi.', 'Companies, freelance projects, and real solutions I have built.')}
-            </p>
-          </div>
-
-          <div className="timeline__list">
-            {timeline.map((item, i) => {
-              const year = lang === 'en' ? item.yearEn : item.yearPt
-              const title = lang === 'en' ? item.titleEn : item.titlePt
-              const company = lang === 'en' ? item.companyEn : item.companyPt
-              const desc = lang === 'en' ? item.descEn : item.descPt
-              const highlights = lang === 'en' ? item.hlEn : item.hlPt
+        {/* Experience must come first, skills second */}
+        <section className="hm-section" id="curriculum-timeline">
+          <h2 className="hm-h">{t('Onde ', "Where I've ")}<em>{t('trabalhei', 'worked')}</em></h2>
+          <ol className="cv-line">
+            {timeline.map((item) => {
+              const [from, to] = (lang === 'en' ? item.yearEn : item.yearPt).split(' - ')
               return (
-                <article key={item.yearPt} className={`timeline__item glass-card animate-fade-in-up delay-${i + 1}`}>
-                  <div className="timeline__header">
-                    <span className="timeline__year">{year}</span>
-                    <span className="timeline__company">{company}</span>
+                <li key={item.yearPt}>
+                  <p className="cv-year"><strong>{from}</strong> – {to}</p>
+                  <div className="cv-job">
+                    <h3>{lang === 'en' ? item.titleEn : item.titlePt}</h3>
+                    <p className="cv-company">{lang === 'en' ? item.companyEn : item.companyPt}</p>
+                    <p>{lang === 'en' ? item.descEn : item.descPt}</p>
+                    <ul className="hm-points">
+                      {(lang === 'en' ? item.hlEn : item.hlPt).map((hl) => (
+                        <li key={hl}><CheckCircle2 size={16} />{hl}</li>
+                      ))}
+                    </ul>
                   </div>
-                  <h3 className="timeline__job-title">{title}</h3>
-                  <p className="timeline__desc">{desc}</p>
-                  <div className="timeline__highlights">
-                    {highlights.map((hl) => (
-                      <div key={hl} className="timeline__highlight-item">
-                        <CheckCircle2 size={14} className="text-emerald" />
-                        <span>{hl}</span>
-                      </div>
-                    ))}
-                  </div>
-                </article>
+                </li>
               )
             })}
-          </div>
-        </div>
-      </section>
+          </ol>
+        </section>
 
-      {/* SECTION 2: Competências & Habilidades (MUST BE SECOND) */}
-      <section className="curriculum-skills" id="curriculum-skills">
-        <div className="curriculum-skills__container">
-          <div className="section-header text-center">
-            <span className="section-tag">
-              <Cpu size={14} /> {t('Habilidades Técnicas', 'Technical Skills')}
-            </span>
-            <h2 className="section-title">
-              {t('Minhas Competências &', 'My Competencies &')} <span className="gradient-amber-text">{t('Habilidades', 'Skills')}</span>
-            </h2>
-            <p className="section-subtitle">
-              {t('Ferramentas, linguagens e frameworks que domino para construir software moderno e eficiente.', 'Tools, languages, and frameworks I master to build modern, efficient software.')}
-            </p>
+        <section className="hm-section" id="curriculum-skills">
+          <h2 className="hm-h">{t('Minhas ', 'My ')}<em>{t('habilidades', 'skills')}</em></h2>
+          <p className="hm-pipe__lead">{t('Ferramentas, linguagens e frameworks que domino para construir software moderno e eficiente.', 'Tools, languages, and frameworks I master to build modern, efficient software.')}</p>
+          <div className="cv-skills">
+            {skillCategories.map((cat) => (
+              <div key={cat.categoryPt}>
+                <h3><cat.icon size={22} />{lang === 'en' ? cat.categoryEn : cat.categoryPt}</h3>
+                <ul>
+                  {cat.skills.map((skill) => <li key={skill}>{skill}</li>)}
+                </ul>
+              </div>
+            ))}
           </div>
-
-          <div className="skills__grid">
-            {skillCategories.map((cat, i) => {
-              const Icon = cat.icon
-              const catName = lang === 'en' ? cat.categoryEn : cat.categoryPt
-              return (
-                <div key={cat.categoryPt} className={`skills__category glass-card animate-fade-in-up delay-${i + 1}`}>
-                  <div className="skills__category-header">
-                    <div className="skills__category-icon">
-                      <Icon size={20} />
-                    </div>
-                    <h3 className="skills__category-title">{catName}</h3>
-                  </div>
-                  <ul className="skills__list">
-                    {cat.skills.map((skill) => (
-                      <li key={skill} className="skills__item">
-                        <span className="skills__bullet" />
-                        <span>{skill}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
+        </section>
+      </div>
     </div>
   )
 }

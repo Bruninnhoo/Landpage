@@ -37,7 +37,7 @@ Confirmed by the user, in priority order:
 
 - Stack: React 19 + TypeScript + Vite 8, `react-router-dom` 7, plain CSS per component/page, `lucide-react` + `react-icons`. No backend, no CMS — all copy is inline in the TSX as PT/EN string pairs.
 - Static hosting only: no server-side features, no form handling.
-- Experience (from `Curriculum.tsx`): Front-end Developer at Residere Imóveis (freelance, 2026–present); Full-stack Developer at CadenaLocações (freelance, 2025–2026); FiveM script developer (React/JS NUI + Lua, freelance, 2024–2025).
+- Experience (from `Curriculum.tsx`): Full-stack Developer at Residere Imóveis (freelance, 2026–present; CI/CD, project kanban, Java/Spring Boot, AWS, React); Full-stack Developer at CadenaLocações (freelance, 2025–2026); FiveM script developer (React/JS NUI + Lua, freelance, 2024–2025).
 - Skill categories used in copy: Front-end, Back-end, Banco de Dados / Database, DevOps & Ferramentas / Tools.
 - Undecided: whether to add more projects later; no formal education/certification section exists and none was claimed.
 
@@ -51,7 +51,7 @@ Confirmed by the user, in priority order:
 ## Evidence on Hand
 
 - **Cadena Locações** — real, public, live at `https://cadenalocacoes.com.br/`. Screenshot `public/Cadena.png`. Stack: Java, Spring Boot, AWS, React, TypeScript. Full-stack modernization: new business features, UI/UX, quote-request optimization.
-- **Residere Imóveis** — real client work (front-end for a real-estate web system), but it is a **private system and must not be shown publicly**: no screenshots, no URL, no interface details. It may be named as experience only.
+- **Residere Imóveis** — real client work (full-stack development of a real-estate web system: CI/CD, project kanban, Java/Spring Boot, AWS, React), but it is a **private system and must not be shown publicly**: no screenshots, no URL, no interface details. It may be named as experience only.
 - `public/project-api.png`, `project-dashboard.png`, `project-ecommerce.png`, `project-social.png` are **template placeholders, not real work** — never present them as projects.
 - No testimonials, client quotes, or metrics exist. Do not fabricate any.
 - Cadena and Residere are the only confirmed real projects; more may be added by the user later.

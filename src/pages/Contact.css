@@ -1,369 +1,168 @@
-/* ========================================
-   CONTACT PAGE - Modern Direct Channels Hub
-   ======================================== */
+/* CONTACT - base styles come from Home.css */
 
-.contact {
-  position: relative;
-  min-height: 100vh;
-  padding-top: 5rem;
+.ct {
+  padding-bottom: 24px;
 }
 
-/* Header */
-.contact-header {
-  padding: 4rem 1.5rem 2.5rem;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-
-.contact-header__container {
-  max-width: 860px;
-  margin: 0 auto;
-}
-
-.contact-header__title {
-  font-family: var(--font-display);
-  font-size: 3.2rem;
-  font-weight: 800;
-  color: var(--text-primary);
-  line-height: 1.2;
-  margin-bottom: 1.25rem;
-  letter-spacing: -0.02em;
-}
-
-.contact-header__text {
-  font-size: 1.15rem;
-  color: var(--text-secondary);
-  max-width: 680px;
-  margin: 0 auto;
-  line-height: 1.7;
-}
-
-/* Main Section */
-.contact-main {
-  padding: 1.5rem 1.5rem 6rem;
-  position: relative;
-  z-index: 1;
-}
-
-.contact-main__container {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-}
-
-/* Grid of Direct Contact Hub Cards */
-.contact-channels-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-}
-
-.contact-hub-card {
-  padding: 2rem;
-  background: #ffffff;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border-color);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 1.5rem;
-  transition: all var(--transition-base);
-  position: relative;
+/* One sheet with a full-width row per channel; the fastest one is painted */
+.ct-list {
+  border: 2px solid var(--ink);
+  border-radius: 26px;
+  background: var(--bg-card);
+  box-shadow: 9px 9px 0 var(--ink);
   overflow: hidden;
 }
 
-.contact-hub-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: transparent;
+.ct-row {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1.25fr) minmax(0, 1fr) 270px;
+  gap: 28px;
+  align-items: center;
+  padding: 28px 32px;
   transition: background var(--transition-fast);
 }
 
-.contact-hub-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+.ct-row + .ct-row {
+  border-top: 2px solid var(--ink);
 }
 
-/* Specific Top Border & Accents on Hover */
-.contact-hub-card--whatsapp:hover::before {
-  background: #25d366;
+.ct-row:hover {
+  background: var(--cream);
 }
 
-.contact-hub-card--email:hover::before {
-  background: var(--accent-primary);
+.ct-row > svg {
+  width: 44px;
+  height: 44px;
 }
 
-.contact-hub-card--linkedin:hover::before {
-  background: #0a66c2;
+.ct-row h2 {
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 800;
 }
 
-.contact-hub-card--github:hover::before {
-  background: var(--text-primary);
-}
-
-/* Card Top */
-.contact-hub-card__top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.contact-hub-card__icon {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition-fast);
-}
-
-.contact-hub-card__icon--whatsapp {
-  background: #ecfdf5;
-  border: 1px solid #a7f3d0;
-  color: #16a34a;
-}
-
-.contact-hub-card__icon--email {
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
-  color: var(--accent-primary);
-}
-
-.contact-hub-card__icon--linkedin {
-  background: #eff6ff;
-  border: 1px solid #c7d2fe;
-  color: #0a66c2;
-}
-
-.contact-hub-card__icon--github {
-  background: #f8fafc;
-  border: 1px solid #cbd5e1;
-  color: var(--text-primary);
-}
-
-/* Badges */
-.contact-hub-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.78rem;
-  font-weight: 600;
-  padding: 0.35rem 0.75rem;
-  border-radius: var(--radius-full);
-}
-
-.contact-hub-badge--whatsapp {
-  background: #ecfdf5;
-  color: #15803d;
-  border: 1px solid #bbf7d0;
-}
-
-.contact-hub-badge--email {
-  background: #eff6ff;
-  color: var(--accent-primary);
-  border: 1px solid #dbeafe;
-}
-
-.contact-hub-badge--linkedin {
-  background: #f0f9ff;
-  color: #0369a1;
-  border: 1px solid #e0f2fe;
-}
-
-.contact-hub-badge--github {
-  background: #f1f5f9;
-  color: var(--text-secondary);
-  border: 1px solid #e2e8f0;
-}
-
-/* Live Dot */
-.live-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-}
-
-.live-dot--green {
-  background: #22c55e;
-  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
-  animation: pulse-dot 2s infinite ease-in-out;
-}
-
-@keyframes pulse-dot {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scale(0.85);
-  }
-}
-
-/* Card Body */
-.contact-hub-card__body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.contact-hub-card__title {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.contact-hub-card__desc {
-  font-size: 0.92rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  min-height: 2.8rem;
-}
-
-.contact-hub-card__value {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  background: #f8fafc;
-  padding: 0.45rem 0.75rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-color);
-  display: inline-block;
-  align-self: flex-start;
-  margin-top: 0.25rem;
-}
-
-/* Card Footer Actions */
-.contact-hub-card__footer {
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
-}
-
-.contact-hub-card__footer--dual {
-  display: grid;
-  grid-template-columns: 1fr auto;
-}
-
-.contact-hub-btn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+.ct-row p {
+  margin-top: 6px;
+  max-width: 44ch;
   font-size: 0.95rem;
-  padding: 0.8rem 1.25rem;
-  border-radius: var(--radius-md);
-  text-decoration: none;
-}
-
-.contact-hub-btn--whatsapp {
-  background: #16a34a;
-  border-color: #16a34a;
-  color: #ffffff;
-}
-
-.contact-hub-btn--whatsapp:hover {
-  background: #15803d;
-  border-color: #15803d;
-  color: #ffffff;
-}
-
-/* Quick Status Strip */
-.contact-status-strip {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.5rem 2rem;
-  background: #ffffff;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border-color);
-  gap: 1.5rem;
-}
-
-.contact-status-item {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-}
-
-.contact-status-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: var(--radius-md);
-  background: #f8fafc;
-  border: 1px solid var(--border-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: var(--text-secondary);
-  flex-shrink: 0;
 }
 
-.contact-status-text {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.contact-status-label {
-  font-size: 0.76rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+.ct-value {
   font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.ct-value small {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
   color: var(--text-muted);
 }
 
-.contact-status-val {
+.ct-row:hover small {
+  color: var(--text-secondary);
+}
+
+.ct-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.ct-actions .hm-btn {
+  flex: 1;
+  padding-inline: 18px;
+  white-space: nowrap;
+}
+
+.ct-row--main,
+.ct-row--main:hover {
+  background: var(--accent-primary);
+  color: #fff;
+}
+
+.ct-row--main p,
+.ct-row--main small,
+.ct-row--main:hover small {
+  color: #e3ebff;
+}
+
+.ct-row--main .hm-btn {
+  background: var(--cream);
+  color: #111318;
+}
+
+/* Facts under the sheet */
+.ct-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-top: 64px;
+}
+
+.ct-facts > div {
+  padding-top: 14px;
+  border-top: 2px solid var(--ink);
+}
+
+.ct-facts dt {
   font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-muted);
 }
 
-.contact-status-divider {
-  width: 1px;
-  height: 36px;
-  background: var(--border-color);
+.ct-facts dd {
+  margin-top: 4px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-wrap: balance;
 }
 
-/* Responsive */
-@media (max-width: 960px) {
-  .contact-status-strip {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-    padding: 1.5rem;
+@media (max-width: 1040px) {
+  .ct-row {
+    grid-template-columns: 48px minmax(0, 1fr) 260px;
   }
 
-  .contact-status-divider {
-    display: none;
+  .ct-value {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .ct-row > svg,
+  .ct-actions {
+    grid-row: 1 / span 2;
+  }
+
+  .ct-facts {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (max-width: 768px) {
-  .contact-header__title {
-    font-size: 2.2rem;
+@media (max-width: 800px) {
+  .ct-row {
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 14px;
+    padding: 24px 20px;
   }
 
-  .contact-channels-grid {
+  .ct-row > svg {
+    grid-row: auto;
+    align-self: start;
+    width: 32px;
+    height: 32px;
+  }
+
+  .ct-value {
+    grid-row: auto;
+  }
+
+  .ct-actions {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .ct-facts {
     grid-template-columns: 1fr;
-  }
-
-  .contact-status-strip {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-hub-card__desc {
-    min-height: auto;
+    gap: 20px;
   }
 }

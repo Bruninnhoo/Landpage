@@ -1,252 +1,151 @@
-/* ========================================
-   CURRICULUM PAGE
-   ======================================== */
+/* CURRICULUM - base styles come from Home.css */
 
-.curriculum {
-  position: relative;
-  min-height: 100vh;
-  padding-top: 5rem;
+/* Experience along a vertical ruler, like the page's scroll ruler */
+.cv-line {
+  --rail: 250px;
+  text-align: left;
 }
 
-/* Ambient Lights */
-.curriculum__glow {
+.cv-line > li {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--rail) minmax(0, 1fr);
+  padding-bottom: 72px;
+  background:
+    linear-gradient(var(--text-primary), var(--text-primary)) var(--rail) 0 / 2px 100% no-repeat,
+    repeating-linear-gradient(var(--text-primary) 0 1px, transparent 1px 14px) var(--rail) 0 / 12px 100% no-repeat;
+}
+
+.cv-line > li:last-child {
+  padding-bottom: 8px;
+}
+
+/* Where the job starts on the ruler; the current one is filled */
+.cv-line > li::before {
+  content: '';
   position: absolute;
+  left: calc(var(--rail) - 10px);
+  top: 14px;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--ink);
   border-radius: 50%;
-  filter: blur(120px);
-  pointer-events: none;
-  z-index: 0;
+  background: var(--bg-card);
 }
 
-.curriculum__glow--cyan {
-  top: 10%;
-  left: 15%;
-  width: 350px;
-  height: 350px;
-  background: rgba(56, 189, 248, 0.08);
+.cv-line > li:first-child::before {
+  background: var(--cream);
 }
 
-.curriculum__glow--violet {
-  top: 40%;
-  right: 15%;
-  width: 400px;
-  height: 400px;
-  background: rgba(168, 85, 247, 0.08);
-}
-
-/* Header */
-.curriculum-header {
-  padding: 4rem 1.5rem 3rem;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-
-.curriculum-header__container {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.curriculum-header__title {
-  font-family: var(--font-display);
-  font-size: 3.2rem;
-  font-weight: 800;
-  color: var(--text-primary);
-  line-height: 1.2;
-  margin-bottom: 1.25rem;
-  letter-spacing: -0.02em;
-}
-
-.curriculum-header__text {
-  font-size: 1.15rem;
-  color: var(--text-secondary);
-  max-width: 650px;
-  margin: 0 auto 2rem;
-  line-height: 1.7;
-}
-
-.curriculum-header__actions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-/* Timeline Section (First section) */
-.curriculum-timeline {
-  padding: 3rem 1.5rem 5rem;
-  position: relative;
-  z-index: 1;
-}
-
-.curriculum-timeline__container {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.timeline__list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.timeline__item {
-  padding: 2rem;
-  background: #ffffff;
-  border-left: 3px solid var(--accent-primary);
-  box-shadow: var(--shadow-sm);
-  border-radius: var(--radius-md);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.timeline__item:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-
-.timeline__header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.75rem;
-}
-
-.timeline__year {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--accent-primary);
-  padding: 0.25rem 0.75rem;
-  background: var(--accent-light);
-  border-radius: var(--radius-full);
-  border: 1px solid #bfdbfe;
-}
-
-.timeline__company {
-  font-size: 0.9rem;
+.cv-year {
+  padding-right: 32px;
+  text-align: right;
   color: var(--text-muted);
 }
 
-.timeline__job-title {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 0.75rem;
-}
-
-.timeline__desc {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 1.25rem;
-}
-
-.timeline__highlights {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.timeline__highlight-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-}
-
-/* Skills Section (Second section) */
-.curriculum-skills {
-  padding: 4rem 1.5rem 6rem;
-  position: relative;
-  z-index: 1;
-  background: rgba(248, 250, 252, 0.6);
-  border-top: 1px solid var(--border-color);
-}
-
-.curriculum-skills__container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.skills__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  margin-top: 2.5rem;
-}
-
-.skills__category {
-  padding: 1.75rem;
-  background: #ffffff;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.skills__category:hover {
-  transform: translateY(-3px);
-  border-color: var(--accent-primary);
-  box-shadow: var(--shadow-md);
-}
-
-.skills__category-header {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-}
-
-.skills__category-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: var(--radius-md);
-  background: var(--accent-light);
-  border: 1px solid #bfdbfe;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.cv-year strong {
+  display: block;
+  font-family: var(--hm-display);
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
   color: var(--accent-primary);
 }
 
-.skills__category-title {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--text-primary);
+.cv-job {
+  padding-left: 56px;
 }
 
-.skills__list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+.cv-job h3 {
+  font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+  font-weight: 700;
+  line-height: 1.25;
 }
 
-.skills__item {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  font-size: 0.95rem;
+.cv-company {
+  margin: 4px 0 14px;
+  font-weight: 700;
+}
+
+.cv-job > p:not(.cv-company) {
+  max-width: 62ch;
   color: var(--text-secondary);
 }
 
-.skills__bullet {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent-primary);
+/* Skills: one ruled row per area */
+.cv-skills {
+  text-align: left;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .curriculum-header__title {
-    font-size: 2.4rem;
+.cv-skills > div {
+  display: grid;
+  grid-template-columns: 290px minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+  padding: 26px 8px;
+  border-top: 2px solid var(--border-color);
+}
+
+.cv-skills > div:last-child {
+  border-bottom: 2px solid var(--border-color);
+}
+
+.cv-skills h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 6px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.cv-skills svg {
+  flex-shrink: 0;
+  color: var(--accent-primary);
+}
+
+.cv-skills ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cv-skills li {
+  padding: 8px 18px;
+  border: 2px solid var(--ink);
+  border-radius: 99px;
+  background: var(--bg-card);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+@media (max-width: 800px) {
+  .cv-line {
+    --rail: 10px;
   }
 
-  .skills__grid {
+  .cv-line > li {
+    display: block;
+    padding: 0 0 48px 46px;
+  }
+
+  .cv-year {
+    padding: 0 0 12px;
+    text-align: left;
+  }
+
+  .cv-line > li::before {
+    top: 6px;
+  }
+
+  .cv-job {
+    padding: 0;
+  }
+
+  .cv-skills > div {
     grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 22px 0;
   }
 }

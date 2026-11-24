@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "src/pages/Home.css"
+        ],
+        "createdAt": "2026-11-24T20:54:00.141Z",
+        "reason": "agent decision: hard-stop two-color wipe that fills the role text once during the hero intro; final text is solid"
+      }
+    ]
+  }
+}

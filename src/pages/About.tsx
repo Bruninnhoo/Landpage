@@ -1,4 +1,6 @@
-import { User, GraduationCap, CheckCircle2, Sparkles, Gamepad2, Headphones, Monitor, Music } from '../components/Icons'
+import type { ReactNode } from 'react'
+import PageHero from '../components/PageHero'
+import { Gamepad2, Music } from '../components/Icons'
 import { useLanguage } from '../context/LanguageContext'
 import './About.css'
 
@@ -29,34 +31,33 @@ const coreValues = [
   },
 ]
 
-const personalInterests = [
+// Small drawings on the interest cards, in the same style as the home cards
+const bars = (n: number) => Array.from({ length: n }, (_, i) => <i key={i} />)
+
+const personalInterests: { scene: ReactNode; titlePt: string; titleEn: string; descPt: string; descEn: string }[] = [
   {
-    icon: Gamepad2,
-    accentClass: 'interest-icon--cyan',
+    scene: <><Gamepad2 size={44} /><div className="ab-life">{bars(2)}</div></>,
     titlePt: 'Videogames & Jogos',
     titleEn: 'Gaming & Video Games',
     descPt: 'Eu amo jogar videogames nas minhas horas vagas! Sou apaixonado pelo gênero soulslike por conta do alto nível de desafio e superação que proporcionam, além de explorar RPGs e narrativas interativas. É onde recarrego minhas energias criativas.',
     descEn: 'I love playing video games in my free time! I am a huge fan of soulslike games for the intense challenge and sense of accomplishment they provide, as well as exploring RPGs and interactive stories to recharge my creative energy.',
   },
   {
-    icon: Headphones,
-    accentClass: 'interest-icon--violet',
+    scene: <div className="ab-eq">{bars(9)}</div>,
     titlePt: 'Meu Gênero de Música Favorito',
     titleEn: 'My Favorite Music Genre',
     descPt: 'Meu gênero de música favorito é bastante eclético — curto demais rock, lofi e eletrônica. Programar ouvindo uma boa trilha sonora é essencial para o meu estado de flow.',
     descEn: 'My favorite music genre is quite eclectic — I really enjoy rock, lofi, and electronic tracks. Coding with a great soundtrack is key to keeping me in flow.',
   },
   {
-    icon: Monitor,
-    accentClass: 'interest-icon--amber',
+    scene: <div className="ab-keys"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>T</kbd></div>,
     titlePt: 'Meu PC & Setup',
     titleEn: 'My PC & Workstation Setup',
     descPt: 'Tenho grande paixão por cuidar, montar e otimizar o meu próprio PC e estação de trabalho. Adoro ajustar atalhos de teclado, scripts no terminal e deixar a estética do meu ambiente perfeita.',
     descEn: 'I have a huge passion for building and optimizing my PC setup and workstation. I love tuning keyboard shortcuts, CLI scripts, and creating a pristine workspace.',
   },
   {
-    icon: Music,
-    accentClass: 'interest-icon--emerald',
+    scene: <><Music size={36} /><div className="ab-strings">{bars(6)}</div></>,
     titlePt: 'Tocar Instrumentos',
     titleEn: 'Playing Instruments',
     descPt: 'Eu toco instrumentos musicais (como violão e guitarra). É a minha forma favorita de expressão artística fora do mundo da programação, exercitando foco e sensibilidade.',
@@ -68,131 +69,67 @@ export default function About() {
   const { lang, t } = useLanguage()
 
   return (
-    <div className="about" id="about-page">
-
-      {/* Ambient Glows */}
-      <div className="about__glow about__glow--cyan" />
-      <div className="about__glow about__glow--violet" />
-
-      {/* Header */}
-      <section className="about-header" id="about-header">
-        <div className="about-header__container">
-          <span className="section-tag animate-fade-in-up">
-            <User size={14} /> {t('Sobre Mim', 'About Me')}
-          </span>
-          <h1 className="about-header__title animate-fade-in-up delay-1">
-            {t('Prazer, eu sou o ', 'Hi, I\'m ')}
-            <span className="gradient-amber-text">{t('Bruno Heyden', 'Bruno Heyden')}</span>.
-          </h1>
-          <p className="about-header__text animate-fade-in-up delay-2">
-            {t(
+    <div className="home" id="about-page">
+      <div className="hm-wrap">
+        <PageHero
+          lead={t('Prazer, eu sou o', "Hi, I'm")}
+          title="Bruno Heyden"
+          text={t(
               'Desenvolvedor Full-Stack focado em transformar ideias e necessidades em produtos digitais velozes, elegantes e eficientes.',
               'Full-Stack Developer focused on turning ideas and business needs into fast, elegant, and efficient digital products.'
             )}
-          </p>
-        </div>
-      </section>
+        />
 
-      {/* Bio Section */}
-      <section className="about-bio" id="about-bio">
-        <div className="about-bio__container">
-
-          {/* Avatar / Visual Frame */}
-          <div className="about-bio__visual animate-fade-in-up delay-1">
-            <div className="about-bio__image-frame glass-panel">
-              <div className="about-bio__avatar-wrapper">
-                <img src="/bruno-avatar.jpg" alt="Bruno Heyden" className="about-bio__avatar-img" />
-              </div>
-            </div>
+        <section className="hm-section ab-bio" id="about-bio">
+          <div className="ab-photo">
+            <img src="/bruno-avatar.jpg" alt="Bruno Heyden" />
+            <span className="hm-cur ab-cur--1" aria-hidden="true">Soulslike</span>
+            <span className="hm-cur ab-cur--2" aria-hidden="true">{t('Guitarra', 'Guitar')}</span>
+            <span className="hm-cur ab-cur--3" aria-hidden="true">Lofi</span>
           </div>
-
-          {/* Text Content in First Person */}
-          <div className="about-bio__content animate-fade-in-up delay-2">
-            <h2 className="about-bio__title">
-              {t('Minha paixão por ', 'My passion for ')}
-              <span className="gradient-amber-text">{t('tecnologia & código', 'tech & code')}</span>.
-            </h2>
-            <p className="about-bio__paragraph">
+          <div>
+            <h2>{t('Minha paixão por ', 'My passion for ')}<em>{t('tecnologia', 'tech')}</em></h2>
+            <p>
               {t(
                 'A minha história com a programação começou pela curiosidade em entender o que acontecia por trás das telas dos jogos e sistemas que eu mais gostava. Essa vontade de descobrir como as coisas funcionam me fez mergulhar de cabeça na engenharia de software e transformar essa paixão na minha profissão.',
                 'My programming journey started out of curiosity to understand what went on behind the scenes of the games and systems I loved. That drive to discover how things work led me to dive deep into software engineering and turn that passion into my career.'
               )}
             </p>
-            <p className="about-bio__paragraph">
+            <p>
               {t(
                 'Hoje, atuo desenvolvendo aplicações completas do início ao fim — unindo APIs robustas e arquitetura limpa no back-end com interfaces dinâmicas, responsivas e intuitivas no front-end.',
                 'Today, I build end-to-end applications — combining robust APIs and clean backend architecture with dynamic, responsive, and intuitive frontend interfaces.'
               )}
             </p>
           </div>
+        </section>
 
-        </div>
-      </section>
+        <section className="hm-section" id="values-section">
+          <h2 className="hm-h">{t('Como eu ', 'How I ')}<em>{t('penso', 'think')}</em></h2>
+          <dl className="ab-values">
+            {coreValues.map((val) => (
+              <div key={val.titlePt}>
+                <dt>{lang === 'en' ? val.titleEn : val.titlePt}</dt>
+                <dd>{lang === 'en' ? val.descEn : val.descPt}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
 
-      {/* Core Values Section */}
-      <section className="about-values" id="values-section">
-        <div className="about-values__container">
-          <div className="section-header text-center">
-            <span className="section-tag">
-              <GraduationCap size={14} /> {t('Meus Valores', 'My Core Values')}
-            </span>
-            <h2 className="section-title">
-              {t('Princípios que Orientam o', 'Principles that Guide')} <span className="gradient-amber-text">{t('Meu Trabalho', 'My Work')}</span>
-            </h2>
+        <section className="hm-section" id="personal-interests">
+          <h2 className="hm-h">{t('Meu lado ', 'My personal ')}<em>{t('pessoal', 'side')}</em></h2>
+          <p className="hm-pipe__lead">{t('Um pouco mais sobre o que eu gosto de fazer nas minhas horas vagas e o que me inspira.', 'A bit more about what I enjoy doing in my free time and what inspires me.')}</p>
+          <div className="hm-deck ab-deck">
+            {personalInterests.map((interest) => (
+              <div className="hm-pol" key={interest.titlePt}>
+                <div className="hm-scene" aria-hidden="true">{interest.scene}</div>
+                <h3>{lang === 'en' ? interest.titleEn : interest.titlePt}</h3>
+                <p>{lang === 'en' ? interest.descEn : interest.descPt}</p>
+              </div>
+            ))}
           </div>
-
-          <div className="values-grid">
-            {coreValues.map((val, index) => {
-              const title = lang === 'en' ? val.titleEn : val.titlePt
-              const desc = lang === 'en' ? val.descEn : val.descPt
-              return (
-                <div key={val.titlePt} className={`value-card glass-card animate-fade-in-up delay-${index + 1}`}>
-                  <div className="value-card__header">
-                    <CheckCircle2 size={20} className="text-cyan" />
-                    <h3>{title}</h3>
-                  </div>
-                  <p>{desc}</p>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Personal Interests / Lado Pessoal Section */}
-      <section className="about-personal" id="personal-interests">
-        <div className="about-personal__container">
-          <div className="section-header text-center">
-            <span className="section-tag">
-              <Sparkles size={14} /> {t('Além do Código', 'Beyond the Code')}
-            </span>
-            <h2 className="section-title">
-              {t('Meu Lado Pessoal &', 'My Personal Side &')} <span className="gradient-amber-text">{t('Interesses', 'Interests')}</span>
-            </h2>
-            <p className="section-subtitle">
-              {t('Um pouco mais sobre o que eu gosto de fazer nas minhas horas vagas e o que me inspira.', 'A bit more about what I enjoy doing in my free time and what inspires me.')}
-            </p>
-          </div>
-
-          <div className="personal-interests-grid">
-            {personalInterests.map((interest, i) => {
-              const IconComponent = interest.icon
-              const title = lang === 'en' ? interest.titleEn : interest.titlePt
-              const desc = lang === 'en' ? interest.descEn : interest.descPt
-              return (
-                <div key={interest.titlePt} className={`personal-interest-card glass-card animate-fade-in-up delay-${i + 1}`}>
-                  <div className={`personal-interest-icon ${interest.accentClass}`}>
-                    <IconComponent size={22} />
-                  </div>
-                  <h3>{title}</h3>
-                  <p>{desc}</p>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
+        </section>
+      </div>
     </div>
   )
 }

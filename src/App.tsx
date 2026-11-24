@@ -2,7 +2,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import BackgroundLines from './components/BackgroundLines'
+import ScrollRuler from './components/ScrollRuler'
 import Home from './pages/Home'
 import About from './pages/About'
 import Curriculum from './pages/Curriculum'
@@ -18,12 +18,24 @@ function ScrollToTop() {
   return null
 }
 
+const MODELS: Record<string, string> = {
+  papel: 'app--paper lay-revista',
+  noite: 'app--dark',
+}
+
 function App() {
+  const { pathname, search } = useLocation()
+  const isHome = pathname === '/'
+  // Every page uses the light "Papel" skin. /?modelo=noite still shows the home's earlier dark version;
+  // drop MODELS and the .app--dark block in index.css if that one is never wanted again.
+  const param = new URLSearchParams(search).get('modelo') ?? ''
+  const modelo = param in MODELS ? param : 'papel'
+  const theme = MODELS[isHome ? modelo : 'papel']
   return (
     <LanguageProvider>
-      <div className="app">
+      <div className={`app ${theme}`}>
         <ScrollToTop />
-        <BackgroundLines />
+        <ScrollRuler />
         <Navbar />
         <main className="main-content">
           <Routes>

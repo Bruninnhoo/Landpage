@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Home, User, FileText, Mail, Menu, X } from './Icons'
+import { Menu, X } from './Icons'
 import { useLanguage } from '../context/LanguageContext'
 import './Navbar.css'
 
 const navLinks = [
-  { path: '/', labelPt: 'Início', labelEn: 'Home', icon: Home },
-  { path: '/sobre', labelPt: 'Sobre', labelEn: 'About', icon: User },
-  { path: '/curriculum', labelPt: 'Currículo', labelEn: 'Resume', icon: FileText },
-  { path: '/contato', labelPt: 'Contato', labelEn: 'Contact', icon: Mail },
+  { path: '/', labelPt: 'Início', labelEn: 'Home' },
+  { path: '/sobre', labelPt: 'Sobre', labelEn: 'About' },
+  { path: '/curriculum', labelPt: 'Currículo', labelEn: 'Resume' },
+  { path: '/contato', labelPt: 'Contato', labelEn: 'Contact' },
 ]
 
 export default function Navbar() {
@@ -34,14 +34,13 @@ export default function Navbar() {
           {/* Brand Logo */}
           <Link to="/" className="navbar__logo" id="nav-logo">
             <span className="navbar__logo-text">
-              bruno<span className="navbar__logo-dot">.dev</span>
+              BRUNO<span className="navbar__logo-dot">.H</span>
             </span>
           </Link>
 
           {/* Navigation Links */}
           <ul className={`navbar__links ${mobileOpen ? 'navbar__links--open' : ''}`} id="nav-links">
             {navLinks.map((link) => {
-              const Icon = link.icon
               const isActive = location.pathname === link.path
               const label = lang === 'en' ? link.labelEn : link.labelPt
               return (
@@ -51,9 +50,7 @@ export default function Navbar() {
                     className={`navbar__link ${isActive ? 'navbar__link--active' : ''}`}
                     id={`nav-link-${link.labelPt.toLowerCase()}`}
                   >
-                    <Icon size={16} className="navbar__link-icon" />
                     <span>{label}</span>
-                    {isActive && <span className="navbar__link-indicator" />}
                   </Link>
                 </li>
               )
